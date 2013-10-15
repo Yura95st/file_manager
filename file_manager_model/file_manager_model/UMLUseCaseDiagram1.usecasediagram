@@ -1,0 +1,576 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" dslVersion="1.0.0.0" Id="6301401b-fcde-4d51-a301-d42f77f471ea" name="UMLUseCaseDiagram1" linkedPackageId="009b794f-8080-4137-923a-6db57f8c7fda" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="296109a0-0fe5-4486-a1d4-92a1ceb3b181" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="e7943004-f7d3-4507-9aa5-f3b2b6637fe2" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="3a72c19d-7733-43bb-a568-e6461286868f">
+          <propertyInstance Id="6e728333-e26e-4f3b-b918-69b1510161a8" name="BaseName">
+            <elementDefinition Id="fe8c71b3-d90e-4c92-8eac-754b14844332" />
+          </propertyInstance>
+          <elementDefinition Id="b5d3d5c0-73bf-4680-abfa-bd6c9e9d301f" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="85882b97-b93d-4ce0-b2b9-15ee4d444bbc">
+          <propertyInstance Id="f9996f62-1990-4bb4-95e5-2891ad926981" name="ClrAttributes">
+            <elementDefinition Id="ac543c2a-d88c-4ce5-95ed-b11eb9b41c13" />
+          </propertyInstance>
+          <elementDefinition Id="79b81989-e5fd-4bf7-a28f-2809e9ee99bc" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="99d4f09c-06e3-4ec6-b821-53e448c90020">
+          <propertyInstance Id="d1a6cd45-17db-4bc4-9b1f-a243ebde3c55" name="Usings">
+            <elementDefinition Id="4e6346ee-48bc-4c9c-abbc-ee2f520bf713" />
+          </propertyInstance>
+          <elementDefinition Id="a4f0636a-0cd6-4155-8758-f83c68909bf7" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="58fb8cfe-6cdb-40f3-a967-5e017e86181f" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="8d7ccfa8-ec7a-441d-9f31-793c7ce02ba7" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="a65e5db4-6ad9-471f-958a-35eb85359f2d">
+          <propertyInstance Id="aadf54cb-6f51-407b-afde-dd1e3a6e015e" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="6fa721e0-3aa1-4e6f-9d85-e0abeb6f0c1f" />
+          </propertyInstance>
+          <elementDefinition Id="3d426531-4b07-4069-8241-6c5ab53acbbe" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="64d7d62e-154b-47dd-b25f-4431925f5659">
+          <propertyInstance Id="20037b35-4242-410d-bfc7-1b6ce400eb25" name="TemplateFilePath" value="ClassTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4|EnumTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4|InterfaceTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4|StructTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4">
+            <elementDefinition Id="57433de2-ab12-4255-903f-a6269b1e6318" />
+          </propertyInstance>
+          <elementDefinition Id="8b6627c5-7dca-4a6d-b0b3-a0dddbed5987" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="0586c28c-57bf-4dd2-8ce7-ef04fb2a9359">
+          <propertyInstance Id="9cef5435-a7ee-45e3-a3da-529d79319739" name="ProjectPath" value="ClassTemplate=..\file_manager_modelLib\file_manager_modelLib.csproj|EnumTemplate=..\file_manager_modelLib\file_manager_modelLib.csproj|InterfaceTemplate=..\file_manager_modelLib\file_manager_modelLib.csproj|StructTemplate=..\file_manager_modelLib\file_manager_modelLib.csproj">
+            <elementDefinition Id="f71e2b50-c953-418d-bdf8-b0b3dd3282fe" />
+          </propertyInstance>
+          <elementDefinition Id="630485a7-a563-4ca4-8d9e-79ec481d9722" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="332b6379-131f-42ad-b60c-c3d86e2aef76">
+          <propertyInstance Id="6046713d-ea42-4c9c-9e16-8d58d3023f3f" name="TargetDirectory" value="ClassTemplate=GeneratedCode\{PackageStructure}|EnumTemplate=GeneratedCode\{PackageStructure}|InterfaceTemplate=GeneratedCode\{PackageStructure}|StructTemplate=GeneratedCode\{PackageStructure}">
+            <elementDefinition Id="20a5e366-3cd7-4740-9f83-12f359c2155f" />
+          </propertyInstance>
+          <elementDefinition Id="ca8e54da-7e31-4083-99a9-6bb9593f50e0" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="cc7d5b00-1e2d-4ce7-a656-5909a8439d5c">
+          <propertyInstance Id="7adc0845-aa6f-4dcc-8942-b245c7941a40" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="616abbca-7d6a-48fc-adf8-1b1971537023" />
+          </propertyInstance>
+          <elementDefinition Id="66a2b1bd-7e00-4047-bd4d-cd5c141b8ffb" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="28ee655a-5c1f-4df8-8c47-e4ddb863ee68">
+          <propertyInstance Id="5d4dad1a-0ee0-459d-ba09-c0c4e5522316" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="5364f08b-f009-44ea-b0a1-b954c2767bfa" />
+          </propertyInstance>
+          <elementDefinition Id="77742638-8257-40d3-ae89-097070a82f73" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="96c7b557-0979-4f77-bd00-d73a5af6acb7">
+          <propertyInstance Id="edd4791e-0135-4bc4-abb3-2fbd3924d5bc" name="Parameters">
+            <elementDefinition Id="bb3fcf52-fbb3-4f96-9e7b-5095b33e7043" />
+          </propertyInstance>
+          <elementDefinition Id="cf94df2a-835c-408b-acfc-c8fa4e4a46f3" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="9a8f82c2-2802-48e4-84b2-490e5823f0ac">
+      <profileInstance Id="dea55bc6-45e8-4a68-b120-3061fa936f41" name="CSharpProfile">
+        <elementDefinition Id="0f69c5d8-4f45-4541-897a-e2ff8adf7f09" />
+      </profileInstance>
+      <elementDefinition Id="cdc85759-594a-48b4-b954-3975f546293d" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="0e06c968-c8e1-425e-97b9-ffabe0599356">
+      <profileInstance Id="1fd37d54-8160-4e5d-a134-0cc3ee8932c8" name="TextTemplateBindings">
+        <elementDefinition Id="1a4eb7ed-845d-4a16-af10-1f389fd75507" />
+      </profileInstance>
+      <elementDefinition Id="17d09f42-d2d7-4c76-9a70-63a6fe70d29a" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <useCase Id="3639fc27-1ce2-4742-acf6-b23df560740d" name="FileSystemInteraction" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d483a401-b15a-49d0-9cb6-79f9de587005" />
+        <additions>
+          <include Id="7f3043de-2786-4c4a-baba-e59c0d35b517">
+            <useCaseMoniker Id="c98b1568-cbf5-449f-8f91-819f9eb72fed" LastKnownName="Select" />
+            <elementDefinition Id="c6805e5f-4252-41c3-ba2e-09cea3a45600" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="f38b1d99-672c-4a52-b491-7bdba546ef68" name="Move" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b0504a89-edb8-4f52-847c-2e1952c97bb6" />
+        <extendedCases>
+          <extend Id="20c516db-41d1-4065-b0fb-8195760b6d60">
+            <useCaseMoniker Id="3639fc27-1ce2-4742-acf6-b23df560740d" LastKnownName="FileSystemInteraction" />
+            <elementDefinition Id="c20a6d0a-b93e-469a-a268-7206a1d6b3d6" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="714d52d5-2ee6-43d1-890c-f42abdef3d48">
+            <useCaseMoniker Id="72d57d2c-db37-4577-993c-979b48a72618" LastKnownName="Copy" />
+            <elementDefinition Id="522e4324-8544-4765-8052-af593080ab6f" />
+          </include>
+          <include Id="6bc8a362-dae0-4ef4-a754-6eee62263161">
+            <useCaseMoniker Id="c4d4ba78-f6c0-460d-a1ea-8813673d83f4" LastKnownName="Delete" />
+            <elementDefinition Id="38b16ea1-8502-4a84-8cda-092bf984c480" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="9212ac68-9625-45c0-a463-41fd954e245e" name="Edit" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="623415f7-cfd7-482c-98b8-4aff12a9927e" />
+        <extendedCases>
+          <extend Id="1b1e73e4-e4e4-4198-b692-bdf23f6b3ed8">
+            <useCaseMoniker Id="3639fc27-1ce2-4742-acf6-b23df560740d" LastKnownName="FileSystemInteraction" />
+            <elementDefinition Id="86074b16-3aba-417c-ae9b-1af6c90af194" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="c4d4ba78-f6c0-460d-a1ea-8813673d83f4" name="Delete" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9cd14a7a-8d82-4c22-88e7-793efd2e1117" />
+        <extendedCases>
+          <extend Id="54deabe0-7873-4935-bd91-c7fde9019d37">
+            <useCaseMoniker Id="3639fc27-1ce2-4742-acf6-b23df560740d" LastKnownName="FileSystemInteraction" />
+            <elementDefinition Id="21fe8bee-11e6-4b01-a8eb-0d6fe49de474" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="8dc24b11-08e8-419e-980d-5d802c9f21fd">
+            <useCaseMoniker Id="28bc6d14-f9af-498e-a2d0-1ec61e2afaf5" LastKnownName="DeleteChildren" />
+            <elementDefinition Id="e4a8d9f6-4929-4344-936a-695fc346895d" />
+          </include>
+          <include Id="98e216dd-fb07-4c91-8291-628a7b1813cd">
+            <useCaseMoniker Id="38cc6c22-75a7-48c3-80a6-da63134cac42" LastKnownName="IsDeleteAllowed" />
+            <elementDefinition Id="defe9922-fa1e-4526-83b3-c8c96e8452c0" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="5471292e-1af3-45fd-a526-ff5c8236265f" name="Create" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="32257fcb-55e8-4295-a3c1-62f77e218498" />
+        <extendedCases>
+          <extend Id="380ae8a0-dc82-470f-bb0a-e95a2696a886">
+            <useCaseMoniker Id="3639fc27-1ce2-4742-acf6-b23df560740d" LastKnownName="FileSystemInteraction" />
+            <elementDefinition Id="de44253d-5e7a-439a-b8bc-4186b37bfef9" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="86e04cc0-808f-4ce9-beee-430ea88b8627">
+            <useCaseMoniker Id="8cdf895d-f73e-4ef7-9c81-4942c05a9ea6" LastKnownName="CreateNewDirectory" />
+            <elementDefinition Id="ef0218d4-95d5-48aa-868a-2d13eddc702b" />
+          </include>
+          <include Id="f16d794c-b1fb-42bb-974a-9506d9f4c28a">
+            <useCaseMoniker Id="b847d69f-3677-42ee-8fc1-0a8a878b68fd" LastKnownName="CreateNewFile" />
+            <elementDefinition Id="ca68152f-8b8c-462b-aa1b-0e3e25a860b0" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="c98b1568-cbf5-449f-8f91-819f9eb72fed" name="Select" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="54698169-d003-487c-9c4a-98d0b8dc67a4" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="31a64092-a716-4f6c-beb7-35bc86de9ff3" name="Read" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4ab11f18-8684-43cf-962a-e960ad73701c" />
+        <extendedCases>
+          <extend Id="66f57d75-ec90-499c-8a42-ae64df4ad99b">
+            <useCaseMoniker Id="3639fc27-1ce2-4742-acf6-b23df560740d" LastKnownName="FileSystemInteraction" />
+            <elementDefinition Id="8ff5c0fc-22e1-41b0-98bc-941f1ccba40a" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="0aed3ae5-f876-46ea-9e14-8428294a8a7c">
+            <useCaseMoniker Id="f1ef24a3-bfe4-4cb4-a7be-737b4c7a477e" LastKnownName="IsTypeSupported" />
+            <elementDefinition Id="321a4c9c-e0c0-4091-8600-762de2e5da8e" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="014ea3d4-46f7-4249-8b3a-55befe4af923" name="Search" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d2accfc6-311a-453f-a43f-3651a76a41d4" />
+        <extendedCases>
+          <extend Id="4d8f8abc-8099-4dc7-8b07-7aea5c46cd22">
+            <useCaseMoniker Id="3639fc27-1ce2-4742-acf6-b23df560740d" LastKnownName="FileSystemInteraction" />
+            <elementDefinition Id="2641cfc0-6e91-4954-b57e-172d5e83c505" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="f0c6d426-3bde-4beb-9a44-d47b6fd848ae">
+            <useCaseMoniker Id="ab780c90-f9f4-4c73-b006-d794dac7a5cd" LastKnownName="SetSearchMask" />
+            <elementDefinition Id="ffce111b-4ee8-4a68-9d35-f88f86255349" />
+          </include>
+          <include Id="811b3e8f-5f5a-4f44-94cc-dab912f4c0b5">
+            <useCaseMoniker Id="18a36848-2b07-41d7-a55c-80c2ed1bfda7" LastKnownName="ShowResults" />
+            <elementDefinition Id="b9826b2d-c94d-4c16-9a79-a66399bacdd5" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ab780c90-f9f4-4c73-b006-d794dac7a5cd" name="SetSearchMask" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="91198873-4ddd-4f45-b7bc-df6fbf788454" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="18a36848-2b07-41d7-a55c-80c2ed1bfda7" name="ShowResults" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d7ab95e1-573b-4b4b-aa42-2138e6c4de23" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="8cdf895d-f73e-4ef7-9c81-4942c05a9ea6" name="CreateNewDirectory" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b458f67c-a656-4fd7-a365-8fa9dba0d306" />
+        <additions>
+          <include Id="9b93d1e2-2760-4807-8c43-5acde6632674">
+            <useCaseMoniker Id="724bdb8e-d6e6-4ef3-8d09-a46e1a32b9c7" LastKnownName="CheckName" />
+            <elementDefinition Id="023111c0-2c8b-492e-a58d-8a75ffe7d15b" />
+          </include>
+          <include Id="d3bea1c4-022a-47e5-9d11-48f6bccdb4c2">
+            <useCaseMoniker Id="b8816e48-ad68-4109-916b-9cdf0ae59168" LastKnownName="SetName" />
+            <elementDefinition Id="f51065b0-3f27-4980-94a9-c11b63289fac" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b847d69f-3677-42ee-8fc1-0a8a878b68fd" name="CreateNewFile" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0896d34a-e070-4284-9939-744e311c53be" />
+        <additions>
+          <include Id="c825c95c-0ac2-4956-978d-b2cbb2b0f08b">
+            <useCaseMoniker Id="724bdb8e-d6e6-4ef3-8d09-a46e1a32b9c7" LastKnownName="CheckName" />
+            <elementDefinition Id="305f314e-910e-4052-b4f0-c44e106749ac" />
+          </include>
+          <include Id="6a429930-c797-4dee-bc5e-24d5a26c66a9">
+            <useCaseMoniker Id="b8816e48-ad68-4109-916b-9cdf0ae59168" LastKnownName="SetName" />
+            <elementDefinition Id="d33e2b72-d02b-44c0-b19f-9ddeac9f8640" />
+          </include>
+          <include Id="8ca59e7d-ac8c-4e7b-be67-0b37f037b4b5">
+            <useCaseMoniker Id="58736cb1-e5dd-4276-8d89-05873059e338" LastKnownName="SetType" />
+            <elementDefinition Id="966dba61-23a6-4473-90ef-3c3322ba2c18" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="c5211dec-8058-4585-9624-852e69157b66" name="Rename" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="78020b22-6a33-4418-8596-de85a52f39ba" />
+        <extendedCases>
+          <extend Id="99638a05-23f7-40fa-bbb4-f991b1415091">
+            <useCaseMoniker Id="3639fc27-1ce2-4742-acf6-b23df560740d" LastKnownName="FileSystemInteraction" />
+            <elementDefinition Id="e43a0a34-fcd8-4973-9e58-09eb8e28719d" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="a4ead62c-0dce-4751-8d42-fcf2e1e5251d">
+            <useCaseMoniker Id="724bdb8e-d6e6-4ef3-8d09-a46e1a32b9c7" LastKnownName="CheckName" />
+            <elementDefinition Id="7b7101b7-9a07-40f2-a7a5-d5de1ba747d9" />
+          </include>
+          <include Id="366b4e62-8e48-4a17-869f-65d62d24525f">
+            <useCaseMoniker Id="b8816e48-ad68-4109-916b-9cdf0ae59168" LastKnownName="SetName" />
+            <elementDefinition Id="f49f450b-1df0-4ab6-a6fe-cc3eba3a4411" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="72d57d2c-db37-4577-993c-979b48a72618" name="Copy" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a6309ba9-b349-4c2c-ac0c-77e49478307e" />
+        <extendedCases>
+          <extend Id="c3edb397-b84c-4121-97f1-08c5f3ca928c">
+            <useCaseMoniker Id="3639fc27-1ce2-4742-acf6-b23df560740d" LastKnownName="FileSystemInteraction" />
+            <elementDefinition Id="b5726d49-77e6-4ed0-a2ee-158d8309ff6a" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="e69109c9-48dd-4429-a414-afb7472b530f">
+            <useCaseMoniker Id="625b0fdd-c6b8-4679-a8ea-832e5b308725" LastKnownName="SelectDestination" />
+            <elementDefinition Id="7342dbe8-e2ca-4cf9-a6e6-a1f4f742145e" />
+          </include>
+          <include Id="8f953ec0-a22d-4ce5-b5b1-d456af43f94a">
+            <useCaseMoniker Id="c6df2c8f-6b77-443b-b61d-dc3f6b39c3ff" LastKnownName="CopyChildren" />
+            <elementDefinition Id="de638000-74d3-4936-8b17-d5d1e01ed4ee" />
+          </include>
+          <include Id="91b10e67-dc2f-468a-ac65-666db8d56f2b">
+            <useCaseMoniker Id="40badfb4-638f-4f9c-b34d-88b19aaddb1b" LastKnownName="IsCopyAllowed" />
+            <elementDefinition Id="97e92e3e-6fb4-442c-a364-e47a192ce43c" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="5e4885fc-0eba-40a2-8cc5-6edc463a2b5e" name="User" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4c9cf7e3-b4e6-47d7-b025-de35cb635c87" />
+        <targetEnds>
+          <association Id="bb753c7b-d7a2-4eeb-b9be-c5874b478607" isDerived="false" sourceEndRoleName="User" targetEndRoleName="FileSystemInteraction" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="3639fc27-1ce2-4742-acf6-b23df560740d" LastKnownName="FileSystemInteraction" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5c8481eb-9888-4a8e-af6e-55dadce251f9" name="User" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="050e1da4-66f7-4913-9045-49736632a7de" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="846a46b8-f4ce-46a7-827d-0ef9267d3c29" name="FileSystemInteraction" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="e3706b15-8755-43de-8642-8a533e7ec378" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="cf7803c7-741b-43d4-9a87-dcb0d38ea3d9" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="724bdb8e-d6e6-4ef3-8d09-a46e1a32b9c7" name="CheckName" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="34bf02b6-3011-4a33-9e46-f94b2f6ea644" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b8816e48-ad68-4109-916b-9cdf0ae59168" name="SetName" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="55325b1d-05d0-45cb-aef0-2bb6a1de9934" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="58736cb1-e5dd-4276-8d89-05873059e338" name="SetType" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b767a881-0d91-47a3-bea7-ee70caac379b" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="34bf9eb6-9c2d-4237-8c81-5965c07d07c8" name="SelectListElements" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b9eef111-9023-4460-a792-2abab9b79fd0" />
+        <extendedCases>
+          <extend Id="8a7af270-fc81-4f68-ab8a-27bbc613da28">
+            <useCaseMoniker Id="c98b1568-cbf5-449f-8f91-819f9eb72fed" LastKnownName="Select" />
+            <elementDefinition Id="d04313fc-e1ca-45c4-9bb1-7562e8158c0c" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="20260dc0-ffae-456d-ad33-56cbf836e142" name="Merge" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="22fdc4c8-0dda-4724-9756-33cc9bc2fe8b" />
+        <extendedCases>
+          <extend Id="d93fbb96-8f3c-4a7b-ba49-0eecc6a6c2b8">
+            <useCaseMoniker Id="9212ac68-9625-45c0-a463-41fd954e245e" LastKnownName="Edit" />
+            <elementDefinition Id="6170b90d-f580-406e-974b-74f101f1e8e3" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="c900a8c0-d6aa-4e57-aae8-d71993860ec2">
+            <useCaseMoniker Id="c98b1568-cbf5-449f-8f91-819f9eb72fed" LastKnownName="Select" />
+            <elementDefinition Id="df97296d-93d7-4308-8417-155877cc87e7" />
+          </include>
+          <include Id="f968f065-6cda-4f7d-bd63-331f6a385625">
+            <useCaseMoniker Id="31a64092-a716-4f6c-beb7-35bc86de9ff3" LastKnownName="Read" />
+            <elementDefinition Id="d88b0aff-b01a-4613-a870-e560248cec8e" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="28bc6d14-f9af-498e-a2d0-1ec61e2afaf5" name="DeleteChildren" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c78e73ca-089b-44e6-ab56-59cf661c9e0d" />
+        <additions>
+          <include Id="2729f6f2-06ce-45c1-a55c-adadaa590822">
+            <useCaseMoniker Id="ae124ac6-3dd2-4954-bb41-efc141ee9134" LastKnownName="GetChildrenList" />
+            <elementDefinition Id="fbf967fa-4a2a-4b74-8de1-6fe69bb495c3" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="38cc6c22-75a7-48c3-80a6-da63134cac42" name="IsDeleteAllowed" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="25c5439c-a69a-4aac-ad5b-3415a2331c2a" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="f1ef24a3-bfe4-4cb4-a7be-737b4c7a477e" name="IsTypeSupported" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6979b3f8-bcf7-46c2-aeb9-07a4bff71dcc" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="625b0fdd-c6b8-4679-a8ea-832e5b308725" name="SelectDestination" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="cea67c92-b180-43fc-90bb-6d88e33ae351" />
+        <additions>
+          <include Id="6857d2cb-5781-41e6-9791-ce712d54d091">
+            <useCaseMoniker Id="c98b1568-cbf5-449f-8f91-819f9eb72fed" LastKnownName="Select" />
+            <elementDefinition Id="b6f97cad-fa06-47b5-978e-9de4a81f984f" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="c022b1a0-f524-4157-914a-16635c547dcc" name="GetInfo" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c8c26e2d-89c8-4b25-88e4-a39ea09b6697" />
+        <extendedCases>
+          <extend Id="3d753ede-6b03-46f7-9ec7-4b02dbe4a51d">
+            <useCaseMoniker Id="3639fc27-1ce2-4742-acf6-b23df560740d" LastKnownName="FileSystemInteraction" />
+            <elementDefinition Id="d8d5eae0-1c41-49a8-bc5a-42435e3df907" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="fd5388f6-7256-4eea-b432-ed6d9587c6c2" name="GetType" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="858e0517-a944-448f-adb9-e7cdef38deae" />
+        <extendedCases>
+          <extend Id="a3edef05-06cb-418c-a83e-f681810b8866">
+            <useCaseMoniker Id="c022b1a0-f524-4157-914a-16635c547dcc" LastKnownName="GetInfo" />
+            <elementDefinition Id="c14c1766-c85e-4b32-9337-7eb0d2692839" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="30cb6d29-d069-4de5-802e-0f757af7c59f" name="GetName" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="781f2d45-a871-4ac4-9063-a2815b785347" />
+        <extendedCases>
+          <extend Id="6722d25e-181b-4562-af48-38102cb4f0ea">
+            <useCaseMoniker Id="c022b1a0-f524-4157-914a-16635c547dcc" LastKnownName="GetInfo" />
+            <elementDefinition Id="d40b1ea2-a535-477f-86ce-9cc605e6ccf4" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ff75e949-f8d9-4d61-818f-97ba2ef34dd4" name="GetSize" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="44a3b183-85a8-4e1d-8b97-da644c4ba67e" />
+        <extendedCases>
+          <extend Id="1be853eb-1792-46b2-8d57-d7051e4e991b">
+            <useCaseMoniker Id="c022b1a0-f524-4157-914a-16635c547dcc" LastKnownName="GetInfo" />
+            <elementDefinition Id="8b0d800c-8acd-41c5-a3e7-19a5d9a4eea4" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="300bd84f-af67-4852-b645-c3e35a702579" name="GetPath" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="748314eb-ed0a-4d2c-883a-18abd6538159" />
+        <extendedCases>
+          <extend Id="751f1007-1abe-4c91-b7d1-344038fb65a4">
+            <useCaseMoniker Id="c022b1a0-f524-4157-914a-16635c547dcc" LastKnownName="GetInfo" />
+            <elementDefinition Id="fcdcaf91-69ad-40b9-8c4c-566cecaaf4ad" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ae124ac6-3dd2-4954-bb41-efc141ee9134" name="GetChildrenList" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a601292e-8d77-4292-9779-3b6504f64a9b" />
+        <extendedCases>
+          <extend Id="38a63c90-ac7f-4944-9dfc-7e2df26018da">
+            <useCaseMoniker Id="c022b1a0-f524-4157-914a-16635c547dcc" LastKnownName="GetInfo" />
+            <elementDefinition Id="ec6eb0b2-62f3-4cbf-9bba-205f25327331" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="c6df2c8f-6b77-443b-b61d-dc3f6b39c3ff" name="CopyChildren" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="fb92ed83-235b-4caf-b9b8-d4b8a019248f" />
+        <additions>
+          <include Id="6961a226-f955-458d-a3e7-e0e0ff96c9c4">
+            <useCaseMoniker Id="ae124ac6-3dd2-4954-bb41-efc141ee9134" LastKnownName="GetChildrenList" />
+            <elementDefinition Id="833674eb-7526-4bb5-86d3-f43df77b9c9d" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="11263091-93f2-442b-9fd3-9059be9173b5" name="SpecialMerge" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f93b5026-9804-404d-9278-2ec958619191" />
+        <extendedCases>
+          <extend Id="984509b0-f350-4e2b-879f-d799bb0acb36">
+            <useCaseMoniker Id="20260dc0-ffae-456d-ad33-56cbf836e142" LastKnownName="Merge" />
+            <elementDefinition Id="65bc4a85-a65f-4ff2-8784-b21eb3228fd0" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="40badfb4-638f-4f9c-b34d-88b19aaddb1b" name="IsCopyAllowed" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0f707fba-7734-44b8-9431-a0c6af48980e" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="2be57ac6-f5c9-48b5-824a-7196a2cc60f7" name="Sort" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="253e6d5e-130b-42a7-b9ad-fa6c9a2bcaff" />
+        <extendedCases>
+          <extend Id="c6c8322c-8d8c-4647-aed9-d4eadccec767">
+            <useCaseMoniker Id="3639fc27-1ce2-4742-acf6-b23df560740d" LastKnownName="FileSystemInteraction" />
+            <elementDefinition Id="1f6fa0f6-f1bd-49af-8390-fb845b925111" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="66d44743-202a-4339-b018-6fffb655d66e" name="SortByName" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e9e287bb-752b-4a65-8865-f74c5a425e5d" />
+        <extendedCases>
+          <extend Id="b256f39b-6504-44df-9a49-a528e377f97b">
+            <useCaseMoniker Id="2be57ac6-f5c9-48b5-824a-7196a2cc60f7" LastKnownName="Sort" />
+            <elementDefinition Id="a02b4994-38ca-4aa3-8858-7b1c668a892e" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="2fa77d24-4eea-430e-ac73-7dfcfaf38e46" name="SortByExtention" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6a4322ac-bacc-4d26-ad07-2ad86b3df101" />
+        <extendedCases>
+          <extend Id="010708c3-4a03-4ae8-96a2-00558b991f99">
+            <useCaseMoniker Id="2be57ac6-f5c9-48b5-824a-7196a2cc60f7" LastKnownName="Sort" />
+            <elementDefinition Id="74c20f7b-85af-4f16-947a-a66b2c5e4f9e" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="f6fe79aa-0eee-40ae-bdba-8cb7fea8e81c" name="SortByDate" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4ce008ed-c010-4e3f-962b-e8e8bc8eec66" />
+        <extendedCases>
+          <extend Id="40bc39b6-468f-438b-bf98-b3d6228eeef7">
+            <useCaseMoniker Id="2be57ac6-f5c9-48b5-824a-7196a2cc60f7" LastKnownName="Sort" />
+            <elementDefinition Id="cc15c9c3-0cd8-4403-9939-e107755544b3" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ab00d84c-c360-445a-a05d-49686ef12d90" name="SortBySize" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8c80443e-b740-498a-9b4e-5b048af307ce" />
+        <extendedCases>
+          <extend Id="9de5eb03-3f1d-45e3-ae16-9cdf07ecec92">
+            <useCaseMoniker Id="2be57ac6-f5c9-48b5-824a-7196a2cc60f7" LastKnownName="Sort" />
+            <elementDefinition Id="5da6fb55-176e-4c51-aeae-61c67c814f0b" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="009b794f-8080-4137-923a-6db57f8c7fda" name="file_manager_model">
+    <elementDefinition Id="53f79973-f98e-4e37-9da4-f4fa5608662e" />
+    <profileInstances>
+      <packageHasProfileInstances Id="1f3dab19-da43-48f1-98ed-e532288e1ace">
+        <profileInstance Id="765fd904-0075-4950-8fbd-97bcbc771234" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="faa477d3-9787-4886-a673-f81d926a9246">
+        <profileInstance Id="4715009f-424a-4607-8650-47246cdbfdad" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

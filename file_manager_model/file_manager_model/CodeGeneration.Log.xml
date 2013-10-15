@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO 11.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/CodeGenLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="Code Generation/Text Transformation Log">
+  <MessageClass Name="Message" Label="Message" Option="Show informational messages" />
+  <MessageClass Name="Warning" Label="Warning" Option="Show warnings" />
+  <MessageClass Name="Error" Label="Error" Option="Show errors" />
+  <MessageClass Name="Property" Label="Property" Option="Show metadata" />
+  <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
+  <Message Timestamp="2013-10-14T23:00:13" Importance="High" Text="Code generation or text transformation started." />
+  <Message Timestamp="2013-10-14T23:00:14" Importance="Diagnostic" Text="Name = ClassTemplate" />
+  <Message Timestamp="2013-10-14T23:00:14" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2013-10-14T23:00:14" Importance="Diagnostic" Text="ProjectPath = ..\file_manager_modelLib\file_manager_modelLib.csproj" />
+  <Message Timestamp="2013-10-14T23:00:14" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2013-10-14T23:00:14" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2013-10-14T23:00:14" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
+  <Message Timestamp="2013-10-14T23:00:14" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
+  <Message Timestamp="2013-10-14T23:00:14" Importance="Medium" Text="file_manager_model's Text Template Binding: 'ClassTemplate' will apply ClassTemplate.t4 to: 'file_manager_model::FileSystemElement' -  (Class), 'file_manager_model::Disk' -  (Class), 'file_manager_model::File' -  (Class), 'file_manager_model::Directory' -  (Class), 'file_manager_model::FileSystemController' -  (Class), 'file_manager_model::FileSystemView' -  (Class), 'file_manager_model::TxtFile' -  (Class), 'file_manager_model::Sequence2' -  (Interaction), 'file_manager_model::Class1' -  (Class), 'file_manager_model::FileSystemElement1' -  (Class), 'file_manager_model::CompositeElement' -  (Class), 'file_manager_model::Sequence1' -  (Interaction) " />
+  <Message Timestamp="2013-10-14T23:00:28" Importance="Medium" Text="Project Added: C:\Yura_cloud\Google Drive\Learning_KNU\2nd_course\Программування\Лабороторнi роботи\Lab_work_1\file_manager_model\file_manager_modelLib\file_manager_modelLib.csproj" />
+  <Message Timestamp="2013-10-14T23:00:28" Importance="Medium" Text="'file_manager_model::FileSystemElement' -  (Class) : success (file created) - C:\Yura_cloud\Google Drive\Learning_KNU\2nd_course\Программування\Лабороторнi роботи\Lab_work_1\file_manager_model\file_manager_modelLib\GeneratedCode\FileSystemElement.cs" />
+  <Message Timestamp="2013-10-14T23:00:29" Importance="Medium" Text="'file_manager_model::Disk' -  (Class) : success (file created) - C:\Yura_cloud\Google Drive\Learning_KNU\2nd_course\Программування\Лабороторнi роботи\Lab_work_1\file_manager_model\file_manager_modelLib\GeneratedCode\Disk.cs" />
+  <Message Timestamp="2013-10-14T23:00:30" Importance="Medium" Text="'file_manager_model::File' -  (Class) : success (file created) - C:\Yura_cloud\Google Drive\Learning_KNU\2nd_course\Программування\Лабороторнi роботи\Lab_work_1\file_manager_model\file_manager_modelLib\GeneratedCode\File.cs" />
+  <Message Timestamp="2013-10-14T23:00:30" Importance="Medium" Text="'file_manager_model::Directory' -  (Class) : success (file created) - C:\Yura_cloud\Google Drive\Learning_KNU\2nd_course\Программування\Лабороторнi роботи\Lab_work_1\file_manager_model\file_manager_modelLib\GeneratedCode\Directory.cs" />
+  <Message Timestamp="2013-10-14T23:00:32" Importance="Medium" Text="'file_manager_model::FileSystemController' -  (Class) : success (file created) - C:\Yura_cloud\Google Drive\Learning_KNU\2nd_course\Программування\Лабороторнi роботи\Lab_work_1\file_manager_model\file_manager_modelLib\GeneratedCode\FileSystemController.cs" />
+  <Message Timestamp="2013-10-14T23:00:33" Importance="Medium" Text="'file_manager_model::FileSystemView' -  (Class) : success (file created) - C:\Yura_cloud\Google Drive\Learning_KNU\2nd_course\Программування\Лабороторнi роботи\Lab_work_1\file_manager_model\file_manager_modelLib\GeneratedCode\FileSystemView.cs" />
+  <Message Timestamp="2013-10-14T23:00:33" Importance="Medium" Text="'file_manager_model::TxtFile' -  (Class) : success (file created) - C:\Yura_cloud\Google Drive\Learning_KNU\2nd_course\Программування\Лабороторнi роботи\Lab_work_1\file_manager_model\file_manager_modelLib\GeneratedCode\TxtFile.cs" />
+  <Message Timestamp="2013-10-14T23:00:33" Importance="Diagnostic" Text="'file_manager_model::Sequence2' -  (Interaction): no file generated because the 'AppliesToElement' method of the template 'ClassTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-14T23:00:33" Importance="Medium" Text="'file_manager_model::Class1' -  (Class) : success (file created) - C:\Yura_cloud\Google Drive\Learning_KNU\2nd_course\Программування\Лабороторнi роботи\Lab_work_1\file_manager_model\file_manager_modelLib\GeneratedCode\Class1.cs" />
+  <Message Timestamp="2013-10-14T23:00:34" Importance="Medium" Text="'file_manager_model::FileSystemElement1' -  (Class) : success (file created) - C:\Yura_cloud\Google Drive\Learning_KNU\2nd_course\Программування\Лабороторнi роботи\Lab_work_1\file_manager_model\file_manager_modelLib\GeneratedCode\FileSystemElement1.cs" />
+  <Message Timestamp="2013-10-14T23:00:34" Importance="Medium" Text="'file_manager_model::CompositeElement' -  (Class) : success (file created) - C:\Yura_cloud\Google Drive\Learning_KNU\2nd_course\Программування\Лабороторнi роботи\Lab_work_1\file_manager_model\file_manager_modelLib\GeneratedCode\CompositeElement.cs" />
+  <Message Timestamp="2013-10-14T23:00:34" Importance="Diagnostic" Text="'file_manager_model::Sequence1' -  (Interaction): no file generated because the 'AppliesToElement' method of the template 'ClassTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-14T23:00:34" Importance="Diagnostic" Text="Name = InterfaceTemplate" />
+  <Message Timestamp="2013-10-14T23:00:34" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2013-10-14T23:00:34" Importance="Diagnostic" Text="ProjectPath = ..\file_manager_modelLib\file_manager_modelLib.csproj" />
+  <Message Timestamp="2013-10-14T23:00:34" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2013-10-14T23:00:34" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2013-10-14T23:00:34" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4" />
+  <Message Timestamp="2013-10-14T23:00:34" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4" />
+  <Message Timestamp="2013-10-14T23:00:34" Importance="Medium" Text="file_manager_model's Text Template Binding: 'InterfaceTemplate' will apply InterfaceTemplate.t4 to: 'file_manager_model::ICompositeElement' -  (Interface), 'file_manager_model::Interface1' -  (Interface), 'file_manager_model::IEditedElement' -  (Interface), 'file_manager_model::ICompositeElement' -  (Interface) " />
+  <Message Timestamp="2013-10-14T23:00:35" Importance="Medium" Text="'file_manager_model::ICompositeElement' -  (Interface) : success (file created) - C:\Yura_cloud\Google Drive\Learning_KNU\2nd_course\Программування\Лабороторнi роботи\Lab_work_1\file_manager_model\file_manager_modelLib\GeneratedCode\ICompositeElement.cs" />
+  <Message Timestamp="2013-10-14T23:00:35" Importance="Medium" Text="'file_manager_model::Interface1' -  (Interface) : success (file created) - C:\Yura_cloud\Google Drive\Learning_KNU\2nd_course\Программування\Лабороторнi роботи\Lab_work_1\file_manager_model\file_manager_modelLib\GeneratedCode\Interface1.cs" />
+  <Message Timestamp="2013-10-14T23:00:35" Importance="Medium" Text="'file_manager_model::IEditedElement' -  (Interface) : success (file created) - C:\Yura_cloud\Google Drive\Learning_KNU\2nd_course\Программування\Лабороторнi роботи\Lab_work_1\file_manager_model\file_manager_modelLib\GeneratedCode\IEditedElement.cs" />
+  <Message Timestamp="2013-10-14T23:00:35" Importance="Medium" Text="'file_manager_model::ICompositeElement' -  (Interface) : success (file replaced) - C:\Yura_cloud\Google Drive\Learning_KNU\2nd_course\Программування\Лабороторнi роботи\Lab_work_1\file_manager_model\file_manager_modelLib\GeneratedCode\ICompositeElement.cs" />
+  <Message Timestamp="2013-10-14T23:00:35" Importance="Diagnostic" Text="Name = StructTemplate" />
+  <Message Timestamp="2013-10-14T23:00:35" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2013-10-14T23:00:35" Importance="Diagnostic" Text="ProjectPath = ..\file_manager_modelLib\file_manager_modelLib.csproj" />
+  <Message Timestamp="2013-10-14T23:00:35" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2013-10-14T23:00:35" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2013-10-14T23:00:35" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+  <Message Timestamp="2013-10-14T23:00:35" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+  <Message Timestamp="2013-10-14T23:00:35" Importance="Medium" Text="file_manager_model's Text Template Binding: 'StructTemplate' will apply StructTemplate.t4 to: 'file_manager_model::FileSystemElement' -  (Class), 'file_manager_model::Disk' -  (Class), 'file_manager_model::File' -  (Class), 'file_manager_model::Directory' -  (Class), 'file_manager_model::FileSystemController' -  (Class), 'file_manager_model::FileSystemView' -  (Class), 'file_manager_model::TxtFile' -  (Class), 'file_manager_model::Sequence2' -  (Interaction), 'file_manager_model::Class1' -  (Class), 'file_manager_model::FileSystemElement1' -  (Class), 'file_manager_model::CompositeElement' -  (Class), 'file_manager_model::Sequence1' -  (Interaction) " />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::FileSystemElement' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::Disk' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::File' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::Directory' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::FileSystemController' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::FileSystemView' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::TxtFile' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::Sequence2' -  (Interaction): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::Class1' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::FileSystemElement1' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::CompositeElement' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::Sequence1' -  (Interaction): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="The selection included 187 elements which were not bound to a template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model' -  (ModelStoreModel): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::Actor1' -  (Actor): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::UseCase1' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::Actor2' -  (Actor): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::UseCase2' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::UseCase3' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::Actor3' -  (Actor): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::FileSystemInteraction' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::Move' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::Edit' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::Delete' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::Create' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::Select' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::Read' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::Search' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::SetSearchMask' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ShowResults' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::CreateNewDirectory' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::CreateNewFile' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::Rename' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::Copy' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::User' -  (Actor): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::CheckName' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::SetName' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::SetType' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::SelectListElements' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::Merge' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::DeleteChildren' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::IsDeleteAllowed' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::AreTxtFiles' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::IsTypeSupported' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::SelectDestination' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::GetInfo' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::GetType' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::GetName' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::GetSize' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::GetPath' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::GetChildrenList' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::CopyChildren' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::SpecialMerge' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::IsCopyAllowed' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::ExecutionEvent' -  (ExecutionEvent): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::Sort' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::SortByName' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::SortByExtention' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::SortByDate' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::SortByType' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::SortBySize' -  (UseCase): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::' -  (InterfaceRealization): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::' -  (Association): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::' -  (Association): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::' -  (InterfaceRealization): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::' -  (Association): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::' -  (InterfaceRealization): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::' -  (InterfaceRealization): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::' -  (Association): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::' -  (Association): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::' -  (Association): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::' -  (Association): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="Diagnostic" Text="'file_manager_model::' -  (Association): no bound template." />
+  <Message Timestamp="2013-10-14T23:00:36" Importance="High" Text="Code generation complete. Errors: 0. Warnings: 0." />
+</Log>
