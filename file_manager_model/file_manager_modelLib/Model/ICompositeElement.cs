@@ -6,12 +6,10 @@
 //------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
 
 public interface ICompositeElement 
 {
-	void GetChildrenList();
-
+    public List<FileSystemInfo> GetChildren();
 }
 

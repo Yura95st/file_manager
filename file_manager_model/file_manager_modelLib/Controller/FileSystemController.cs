@@ -11,23 +11,8 @@ using System.Text;
 
 public class FileSystemController
 {
-	private object selected_elements_
-	{
-		get;
-		set;
-	}
-
-	private object active_element_
-	{
-		get;
-		set;
-	}
-
-	private object elements_list_
-	{
-		get;
-		set;
-	}
+    private ListColumn left_column;
+    private ListColumn right_column;
 
 	public virtual void Select(int[] elements_list)
 	{

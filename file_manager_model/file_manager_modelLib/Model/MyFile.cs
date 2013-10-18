@@ -6,18 +6,31 @@
 //------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
 
-public class MyDirectory : FileSystemElement, ICompositeElement, IEditedElement
+public class MyFile : FileSystemElement, IEditedElement
 {
-	private object children_list_
-	{
-		get;
-		set;
-	}
+	private string extention_;
 
-    public virtual void IEditedElement.SetName(string name)
+    public string Extension
+    {
+        get
+        {
+            return extention_;
+        }
+        set
+        {
+            //TODO: Check valid value
+            extention_ = value;
+        }
+    }
+
+    public MyFile(string name)
+    {
+        name_ = name_;
+    }
+
+	public virtual void CheckExtention()
 	{
 		throw new System.NotImplementedException();
 	}
@@ -32,10 +45,9 @@ public class MyDirectory : FileSystemElement, ICompositeElement, IEditedElement
 		throw new System.NotImplementedException();
 	}
 
-    public override void ICompositeElement.GetChildrenList()
+	protected virtual void IsSupported()
 	{
 		throw new System.NotImplementedException();
 	}
-
 }
 

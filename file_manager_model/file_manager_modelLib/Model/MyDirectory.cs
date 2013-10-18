@@ -9,28 +9,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class MyDrive : FileSystemElement, ICompositeElement
+public class MyDirectory : FileSystemElement, ICompositeElement, IEditedElement
 {
-	private object children_list_
+    public MyDirectory(string name)
+    {
+        this.name_ = name;
+    }
+
+    public virtual void IEditedElement.Delete()
 	{
-		get;
-		set;
+		throw new System.NotImplementedException();
 	}
 
 	public override void Read()
 	{
 		throw new System.NotImplementedException();
 	}
-
-	public virtual void Format()
-	{
-		throw new System.NotImplementedException();
-	}
-
-    public override void ICompositeElement.GetChildrenList()
-	{
-		throw new System.NotImplementedException();
-	}
-
 }
 
