@@ -2,163 +2,158 @@
 using System.IO;
 using System.Collections.Generic;
 
-
-class ListColumn
+namespace file_manager_modelLib.Model
 {
-    private List<FileSystemElement> element_list_;
-    private int active_element_;
-    private int[] selected_elements_;
-    private string path_;
-    private List<MyDrive> drives_;
-    private int active_drive_;
-
-    public string Path
+    class ListColumn
     {
-        get
+        private List<FileSystemElement> _elementList;
+        private int _activeElement;
+        private int[] _selectedElements;
+        private string _path;
+        private List<MyDrive> _drives;
+        private int active_drive_;
+
+        public string Path
         {
-            return path_;
+            get
+            {
+                return _path;
+            }
+            set
+            {
+                //TODO: Check valid value
+                _path = value;
+            }
         }
-        set
+
+        public int ActiveElement
         {
-            //TODO: Check valid value
-            path_ = value;
+            get
+            {
+                return _activeElement;
+            }
+            set
+            {
+                //TODO: Check valid value
+                _activeElement = value;
+            }
         }
-    }
 
-    public int ActiveElement
-    {
-        get
+        public int ActiveDrive_
         {
-            return active_element_;
+            get
+            {
+                return active_drive_;
+            }
+            set
+            {
+                //TODO: Check valid value
+                active_drive_ = value;
+            }
         }
-        set
+
+        public List<MyDrive> Drives
         {
-            //TODO: Check valid value
-            active_element_ = value;
+            get
+            {
+                return _drives;
+            }
         }
-    }
 
-    public int ActiveDrive_
-    {
-        get
+        public void Select();
+
+        public void BuildDrives()
         {
-            return active_drive_;
+            DriveInfo[] allDrives = DriveInfo.GetDrives();
+
+            foreach (DriveInfo d in allDrives)
+            {
+                MyDrive my_drive = new MyDrive(d.Name);
+
+                try
+                {
+                    my_drive.Label = d.VolumeLabel;
+                    my_drive.Type = d.DriveType;
+                    my_drive.Format = d.DriveFormat;
+                    my_drive.FreeSpace = d.AvailableFreeSpace;
+                    my_drive.Size = d.TotalSize;
+
+                    _drives.Add(my_drive);
+                }
+                catch (Exception e)
+                {
+
+                }
+                finally
+                { }
+            }
         }
-        set
+
+        public void BuildElements()
         {
-            //TODO: Check valid value
-            active_drive_ = value;
+            this.BuildDirectories();
+            this.BuildFiles();
         }
-    }
 
-    public List<MyDrive> Drives
-    {
-        get
+        private void BuildFiles()
         {
-            return drives_;
-        }
-    }
-
-    public void Select()
-    {
-
-    }
-
-    public void BuildDrives()
-    {
-        DriveInfo[] allDrives = DriveInfo.GetDrives();
-
-        foreach (DriveInfo d in allDrives)
-        {
-            MyDrive my_drive = new MyDrive(d.Name);
-
+            DirectoryInfo di = new DirectoryInfo(_path);
             try
             {
-                my_drive.Label = d.VolumeLabel;
-                my_drive.Type = d.DriveType;
-                my_drive.Format = d.DriveFormat;
-                my_drive.FreeSpace = d.AvailableFreeSpace;
-                my_drive.Size = d.TotalSize;
+                foreach (FileInfo f in di.GetFiles())
+                {
+                   
 
-                drives_.Add(my_drive);
+                    try
+                    {
+                        MyFile my_file = new MyFile(f.Name, f.Length, f.Extension, f.FullName, 
+                            f.CreationTimeUtc, f.LastAccessTimeUtc, f.LastWriteTimeUtc);
+
+                        _elementList.Add(my_file);
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
+                    finally
+                    { }
+                }
             }
             catch (Exception e)
             {
 
             }
-            finally
-            { }
+            finally { }
         }
-    }
 
-    public void BuildElements()
-    {
-        this.BuildDirectories();
-        this.BuildFiles();
-    }
-
-    private void BuildFiles()
-    {
-        DirectoryInfo di = new DirectoryInfo(@path_);
-        try
+        private void BuildDirectories()
         {
-            foreach (FileInfo f in di.GetFiles())
+            DirectoryInfo di = new DirectoryInfo(_path);
+            try
             {
-                MyFile my_file = new MyFile(f.Name);
-
-                try
+                foreach (DirectoryInfo d in di.GetDirectories())
                 {
-                    my_file.Extension = f.Extension;
-                    my_file.Size = f.Length;
-                    my_file.Parent = f.Directory;
-                    my_file.CreationDate = f.CreationTimeUtc;
+                    try
+                    {
+                        MyDirectory my_directory = new MyDirectory(d.Name, d.Extension, d.FullName,
+                            d.CreationTimeUtc, d.LastAccessTimeUtc, d.LastWriteTimeUtc);
 
-                    element_list_.Add(my_file);
-                }
-                catch (Exception e)
-                {
+                        _elementList.Add(my_directory);
 
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
+                    finally
+                    { }
                 }
-                finally
-                { }
             }
-        }
-        catch (Exception e)
-        {
-
-        }
-        finally { }
-    }
-
-    private void BuildDirectories()
-    {
-        DirectoryInfo di = new DirectoryInfo(@path_);
-        try
-        {
-            foreach (DirectoryInfo d in di.GetDirectories())
+            catch (Exception e)
             {
-                MyDirectory my_directory = new MyDirectory(d.Name);
 
-                try
-                {
-                    my_directory.Parent = d.Parent;
-                    my_directory.CreationDate = d.CreationTimeUtc;
-
-                    element_list_.Add(my_directory);
-                }
-                catch (Exception e)
-                {
-
-                }
-                finally
-                { }
             }
+            finally { }
         }
-        catch (Exception e)
-        {
-
-        }
-        finally { }
     }
 }
-

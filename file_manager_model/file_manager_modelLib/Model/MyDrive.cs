@@ -7,86 +7,85 @@
 using System;
 using System.IO;
 
-public class MyDrive : FileSystemElement, ICompositeElement
+namespace file_manager_modelLib.Model
 {
-    private string label_;
-    private DriveType type_;
-    private string format_;
-    private long free_space_;
-    private string p;
-
-    public string Label
+    public class MyDrive : IMyDriveInfo, IMyDriveOperations
     {
-        get
+        private string _label;
+        private DriveType _type;
+        private string _format;
+        private long _freeSpace;
+        private long _size;
+
+        public string Label
         {
-            return label_;
+            get
+            {
+                return _label;
+            }
+            set
+            {
+                //TODO: Check valid value
+                _label = value;
+            }
         }
-        set
+
+        public DriveType Type
         {
-            //TODO: Check valid value
-            label_ = value;
+            get
+            {
+                return _type;
+            }
+            set
+            {
+                //TODO: Check valid value
+                _type = value;
+            }
+        }
+
+        public string Format
+        {
+            get
+            {
+                return _format;
+            }
+            set
+            {
+                //TODO: Check valid value
+                _format = value;
+            }
+        }
+
+        public long FreeSpace
+        {
+            get
+            {
+                return _freeSpace;
+            }
+            set
+            {
+                //TODO: Check valid value
+                _freeSpace = value;
+            }
+        }
+
+        public long Size
+        {
+            get
+            {
+                return _size;
+            }
+            set
+            {
+                //TODO: Check valid value
+                _size = value;
+            }
+        }
+
+        public MyDrive(string name)
+        {
+            this.name_ = name;
         }
     }
-
-    public DriveType Type
-    {
-        get
-        {
-            return type_;
-        }
-        set
-        {
-            //TODO: Check valid value
-            type_ = value;
-        }
-    }
-
-    public string Format
-    {
-        get
-        {
-            return format_;
-        }
-        set
-        {
-            //TODO: Check valid value
-            format_ = value;
-        }
-    }
-
-    public long FreeSpace
-    {
-        get
-        {
-            return free_space_;
-        }
-        set
-        {
-            //TODO: Check valid value
-            free_space_ = value;
-        }
-    }
-
-    public MyDrive(string name)
-    {
-        this.name_ = name;
-    }
-    
-    private object children_list_
-	{
-		get;
-		set;
-	}
-
-	public override void Read()
-	{
-		throw new System.NotImplementedException();
-	}
-
-    public override void ICompositeElement.GetChildrenList()
-	{
-		throw new System.NotImplementedException();
-	}
-
 }
 

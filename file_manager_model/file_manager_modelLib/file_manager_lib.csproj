@@ -39,16 +39,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GeneratedCode\MyDirectory.cs" />
-    <Compile Include="GeneratedCode\MyDrive.cs" />
-    <Compile Include="GeneratedCode\MyFile.cs" />
-    <Compile Include="GeneratedCode\FileSystemController.cs" />
-    <Compile Include="GeneratedCode\FileSystemElement.cs" />
-    <Compile Include="GeneratedCode\FileSystemView.cs" />
-    <Compile Include="GeneratedCode\ICompositeElement.cs" />
-    <Compile Include="GeneratedCode\IEditedElement.cs" />
-    <Compile Include="GeneratedCode\Program.cs" />
-    <Compile Include="GeneratedCode\TxtFile.cs" />
+    <Compile Include="Controller\ListColumn.cs" />
+    <Compile Include="Model\IMyDriveInfo.cs" />
+    <Compile Include="Model\IMyDriveOperations.cs" />
+    <Compile Include="Model\IMyFileSystemInfo.cs" />
+    <Compile Include="Model\IMyFileSystemOperations.cs" />
+    <Compile Include="Model\MyDirectory.cs" />
+    <Compile Include="Model\MyDrive.cs" />
+    <Compile Include="Model\MyFile.cs" />
+    <Compile Include="Controller\FileSystemController.cs" />
+    <Compile Include="Model\FileSystemElement.cs" />
+    <Compile Include="View\FileSystemView.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Model\TxtFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

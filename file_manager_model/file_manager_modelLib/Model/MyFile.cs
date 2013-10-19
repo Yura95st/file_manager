@@ -8,46 +8,42 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-public class MyFile : FileSystemElement, IEditedElement
+namespace file_manager_modelLib.Model
 {
-	private string extention_;
-
-    public string Extension
+    public class MyFile : FileSystemElement
     {
-        get
+        protected long _size;
+
+        public MyFile(string name, long size, string extension, string path, 
+            DateTime creationTime, DateTime lastAccessTime, DateTime lastWriteTime)
         {
-            return extention_;
+            this._name = name;
+            this._size = size;
+            this._extension = extension;
+            this._path = path;
+            this._lastAccessTime = lastAccessTime;
+            this._lastWriteTime = lastWriteTime;
+            this._creationTime = creationTime;
         }
-        set
+
+        public void IMyFileSystemOperations.Delete();
+
+        public void IMyFileSystemOperations.Exists();
+
+        public void IMyFileSystemOperations.MoveTo(string destDirName);
+
+        public void IMyFileSystemOperations.Read();
+
+        public void IMyFileSystemOperations.Create();
+
+        public long Size
         {
-            //TODO: Check valid value
-            extention_ = value;
+            get
+            {
+                return _size;
+            }
         }
     }
-
-    public MyFile(string name)
-    {
-        name_ = name_;
-    }
-
-	public virtual void CheckExtention()
-	{
-		throw new System.NotImplementedException();
-	}
-
-    public virtual void IEditedElement.Delete()
-	{
-		throw new System.NotImplementedException();
-	}
-
-	public override void Read()
-	{
-		throw new System.NotImplementedException();
-	}
-
-	protected virtual void IsSupported()
-	{
-		throw new System.NotImplementedException();
-	}
 }
+
 

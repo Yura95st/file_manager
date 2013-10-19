@@ -8,73 +8,48 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-public abstract class FileSystemElement
+namespace file_manager_modelLib.Model
 {
-	protected string name_;
-    protected long size_;
-    private DateTime creation_date_;
-    private DirectoryInfo parent_;
-
-    public DateTime CreationDate
+    public abstract class FileSystemElement : IMyFileSystemInfo
     {
-        get
+        protected string _name;
+        protected string _extension;
+        protected string _path;
+        protected DateTime _lastAccessTime;
+        protected DateTime _lastWriteTime;
+        protected DateTime _creationTime;
+
+        public string GetName()
         {
-            return creation_date_;
+            return this._name;
         }
-        set
+
+        public string GetPath()
         {
-            //TODO: Check valid value
-            creation_date_ = value;
+            return this._path;
         }
+
+        public string GetExtension()
+        {
+            return this._extension;
+        }
+
+        public DateTime GetLastAccessTime()
+        {
+            return this._lastAccessTime;
+        }
+
+        public DateTime GetLastWriteTime()
+        {
+            return this._lastWriteTime;
+        }
+
+        public DateTime GetCreationTime()
+        {
+            return this._creationTime;
+        }
+
+        public MyDirectory GetParent();
     }
-
-    public DirectoryInfo Parent
-    {
-        get
-        {
-            return parent_;
-        }
-        set
-        {
-            //TODO: Check valid value
-            parent_ = value;
-        }
-    }
-
-    public string Name
-	{
-        get
-        {
-            return name_;
-        }
-        set
-        {
-            //TODO: Check valid value
-            name_ = value;
-        }
-	}
-
-    public long Size
-    {
-        get
-        {
-            return size_;
-        }
-        set
-        {
-            //TODO: Check valid value
-            size_ = value;
-        }
-    }
-
-	public virtual void Read()
-	{
-		throw new System.NotImplementedException();
-	}
-
-	public virtual void CheckName()
-	{
-		throw new System.NotImplementedException();
-	}
 }
 

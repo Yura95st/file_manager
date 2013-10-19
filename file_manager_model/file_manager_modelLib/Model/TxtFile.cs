@@ -9,27 +9,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class TxtFile : MyFile
+namespace file_manager_modelLib.Model
 {
-	public override void Read()
-	{
-		throw new System.NotImplementedException();
-	}
+    public class TxtFile : MyFile
+    {
+        public override void Read();
 
-	public virtual void GetWordFrequency(int word_id)
-	{
-		throw new System.NotImplementedException();
-	}
+        public void GetWordFrequency();
 
-	public virtual void SearchInFile(string query)
-	{
-		throw new System.NotImplementedException();
-	}
+        public void SearchInFile();
 
-	public virtual void Edit(string text)
-	{
-		throw new System.NotImplementedException();
-	}
-
+        public void Edit();
+    }
 }
 

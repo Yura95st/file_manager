@@ -6,24 +6,22 @@
 //------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
 
-public class MyDirectory : FileSystemElement, ICompositeElement, IEditedElement
+namespace file_manager_modelLib.Model
 {
-    public MyDirectory(string name)
+    public class MyDirectory : FileSystemElement
     {
-        this.name_ = name;
+        public MyDirectory(string name, string extension, string path, 
+            DateTime creationTime, DateTime lastAccessTime, DateTime lastWriteTime)
+        {
+            this._name = name;
+            this._extension = extension;
+            this._path = path;
+            this._lastAccessTime = lastAccessTime;
+            this._lastWriteTime = lastWriteTime;
+            this._creationTime = creationTime;
+        }
     }
-
-    public virtual void IEditedElement.Delete()
-	{
-		throw new System.NotImplementedException();
-	}
-
-	public override void Read()
-	{
-		throw new System.NotImplementedException();
-	}
 }
 
