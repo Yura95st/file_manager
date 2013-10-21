@@ -1,15 +1,16 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using System.IO.Path;
 
-namespace file_manager_test_app
+namespace file_manager_test_app.Model
 {
-    class Column : IColumnInfo, IColumnBuild
+    class Column : IColumnInfo, IColumnBuild, IColumnOperations
     {
         private List<FileSystemInfo> _elements;
         private int _activeElement;
         private List<int> _selectedElements;
-        private string _path;
+        private string _currentPath;
         private List<DriveInfo> _drives;
         private int _activeDrive;
 
@@ -20,19 +21,26 @@ namespace file_manager_test_app
             _selectedElements = new List<int>();
             _activeDrive = -1;
             _activeElement = -1;
-            _path = "";
+            _currentPath = "";
         }
 
-        public string Path
+        public string CurrentPath
         {
             get
             {
-                return _path;
+                return _currentPath;
             }
             set
             {
-                //TODO: Check valid value
-                _path = value;
+                try
+                {
+                    CheckPath(value);
+                    _currentPath = value;
+                }
+                catch (Exception e)
+                { }
+                finally
+                { }
             }
         }
 
@@ -45,7 +53,7 @@ namespace file_manager_test_app
             set
             {
                 if (value < _elements.Count)
-                _activeElement = value;
+                    _activeElement = value;
             }
         }
 
@@ -62,21 +70,8 @@ namespace file_manager_test_app
             }
         }
 
-        public List<DriveInfo> Drives
-        {
-            get
-            {
-                return _drives;
-            }
-        }
-
         public void Select(int[] elements)
         { }
-
-        public FileSystemInfo GetActiveElement()
-        {
-            return _elements[_activeElement];
-        }
 
         public void DeleteSelectedElements()
         {
@@ -95,30 +90,41 @@ namespace file_manager_test_app
 
         public void CopySelectedElementsTo(string destination)
         {
-            if (CheckPath(destination) && destination != _path)
+            try
             {
-                foreach (int i in _selectedElements)
+                CheckPath(destination);
+
+                if (destination != _currentPath)
                 {
-                    try
+                    foreach (int i in _selectedElements)
                     {
-                        var element = _elements[i];
-                        if (element.GetType().Name == "DriveInfo")
+                        try
                         {
-                            DirectoryInfo d = (DirectoryInfo)element;
-                            d.MoveTo(destination);
+                            DirectoryInfo d = _elements[i] as DirectoryInfo;
+                            if (d != null)
+                            {
+                                d.MoveTo(destination);
+                                return;
+                            }
+
+                            FileInfo f = _elements[i] as FileInfo;
+                            if (f != null)
+                            {
+                                f.MoveTo(destination);
+                                return;
+                            }
                         }
-                        else if (element.GetType().Name == "FileInfo")
-                        {
-                            FileInfo f = (FileInfo)element;
-                            f.MoveTo(destination);
-                        }
+                        catch (Exception e)
+                        { }
+                        finally
+                        { }
                     }
-                    catch (Exception e)
-                    { }
-                    finally
-                    { }
                 }
             }
+            catch (Exception e)
+            { }
+            finally
+            { }
         }
 
         public void MoveSelectedElementsTo(string destination)
@@ -135,7 +141,7 @@ namespace file_manager_test_app
             {
                 try
                 {
-                    _drives.Add(d);   
+                    _drives.Add(d);
                 }
                 catch (Exception e)
                 {
@@ -156,7 +162,7 @@ namespace file_manager_test_app
         {
             try
             {
-                string newDirFullName = _path + name;
+                string newDirFullName = _currentPath + name;
 
                 if (Directory.Exists(newDirFullName))
                 {
@@ -176,7 +182,7 @@ namespace file_manager_test_app
         {
             try
             {
-                string newFileFullName = _path + name;
+                string newFileFullName = _currentPath + name;
 
                 if (File.Exists(newFileFullName))
                 {
@@ -197,13 +203,80 @@ namespace file_manager_test_app
             _selectedElements.RemoveRange(0, _selectedElements.Count);
         }
 
+        public void Rename(string newName)
+        {
+            try
+            {
+                CheckName(newName);
+
+                string newPath = Path.Combine(_currentPath, newName);
+                
+                FileSystemInfo item = _elements[_activeElement];
+
+                FileInfo fileInfo = item as FileInfo;
+                if (fileInfo != null)
+                {
+                    fileInfo.MoveTo(newPath);
+                    return;
+                }
+
+                DirectoryInfo directoryInfo = item as DirectoryInfo;
+                if (directoryInfo != null)
+                {
+                    directoryInfo.MoveTo(newPath);
+                    return;
+                }
+            }
+            catch (Exception e)
+            { }
+            finally
+            { }
+        }
+
+        public List<MyFileSystemInfo> GetElementsList()
+        {
+            List<MyFileSystemInfo> myItemsList = new List<MyFileSystemInfo>();
+
+            foreach (FileSystemInfo item in _elements)
+            {
+                MyFileSystemInfo myItem = new MyFileSystemInfo(item.Name, item.Extension, item.FullName, 
+                    item.CreationTime, item.CreationTimeUtc, item.LastAccessTime,
+                    item.LastAccessTimeUtc, item.LastWriteTime, item.LastWriteTimeUtc);
+
+                //File has its size, directory doesn't
+                FileInfo f = item as FileInfo;
+                if (f != null) {
+                    myItem.Size = f.Length;
+                }
+
+                myItemsList.Add(myItem);
+            }
+
+            return myItemsList;
+        }
+
+        public List<MyDriveInfo> GetDrivesList()
+        {
+            List<MyDriveInfo> myDrivesList = new List<MyDriveInfo>();
+
+            foreach (DriveInfo d in _drives)
+            {
+                MyDriveInfo myDrive = new MyDriveInfo(d.AvailableFreeSpace, d.DriveFormat, d.DriveType, 
+                    d.Name, d.TotalFreeSpace, d.TotalSize, d.VolumeLabel);
+
+                myDrivesList.Add(myDrive);
+            }
+
+            return myDrivesList;
+        }
+
         private void BuildFiles()
         {
-            DirectoryInfo di = new DirectoryInfo(_path);
+            DirectoryInfo di = new DirectoryInfo(_currentPath);
             try
             {
                 foreach (FileInfo f in di.GetFiles())
-                {                  
+                {
                     try
                     {
                         _elements.Add(f);
@@ -225,7 +298,7 @@ namespace file_manager_test_app
 
         private void BuildDirectories()
         {
-            DirectoryInfo di = new DirectoryInfo(_path);
+            DirectoryInfo di = new DirectoryInfo(_currentPath);
             try
             {
                 foreach (DirectoryInfo d in di.GetDirectories())
@@ -249,10 +322,41 @@ namespace file_manager_test_app
             finally { }
         }
 
-        private bool CheckPath(string path)
+        private void CheckPath(string path)
         {
-            DirectoryInfo d = new DirectoryInfo(path);
-            return (d != null ? true : false);
+            if (path == null)
+            {
+                throw new ArgumentNullException("path");
+            }
+            else if (path.Length == 0)
+            {
+                throw new ArgumentException("The path is empty.", "path");
+            }
+            else
+            {
+                DirectoryInfo d = new DirectoryInfo(path);
+                if (d == null)
+                {
+                    throw new ArgumentException("Invalid path.", "path");
+                }
+            }
+        }
+
+        private void CheckName(string name)
+        {
+            if (name == null)
+            {
+                throw new ArgumentNullException("name");
+            }
+            else if (name.Length == 0)
+            {
+                throw new ArgumentException("The name is empty.", "name");
+            }
+            else if (name.IndexOf(Path.AltDirectorySeparatorChar) >= 0
+                || name.IndexOf(Path.AltDirectorySeparatorChar) >= 0)
+            {
+                throw new ArgumentException("The name contains path separators.", "newName");
+            }
         }
     }
 }
