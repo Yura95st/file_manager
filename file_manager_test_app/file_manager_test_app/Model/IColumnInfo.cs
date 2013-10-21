@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 
-namespace file_manager_test_app
+namespace file_manager_test_app.Model
 {
     interface IColumnInfo
     {
-        string Path
+        string CurrentPath
         {
             get;
             set;
@@ -24,9 +23,8 @@ namespace file_manager_test_app
             set;
         }
 
-        List<DriveInfo> Drives
-        {
-            get;
-        }
+        List<MyFileSystemInfo> GetElementsList();
+
+        List<MyDriveInfo> GetDrivesList();
     }
 }
