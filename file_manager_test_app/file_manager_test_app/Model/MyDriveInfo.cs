@@ -29,7 +29,7 @@ namespace file_manager_test_app.Model
             }
         }
 
-        public string DriveType
+        public DriveType DriveType
         {
             get
             {

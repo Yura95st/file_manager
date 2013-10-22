@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.IO.Path;
 
 namespace file_manager_test_app.Model
 {
