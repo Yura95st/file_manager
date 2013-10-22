@@ -23,11 +23,6 @@ namespace file_manager_test_app
         public MainWindow()
         {
             InitializeComponent();
-
-            Column leftColumn = new Column();
-            leftColumn.BuildDrives();
-            leftColumn.Path = "c:\\Yura_cloud";
-            leftColumn.BuildElements();
         }
     }
 }
