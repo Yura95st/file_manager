@@ -107,6 +107,16 @@ namespace file_manager_test_app.Controllers
            
         }
 
+        public List<Model.MyFileSystemInfo> GetElementsList()
+        {
+            return _activeColumn.GetElementsList();
+        }
+
+        public List<Model.MyDriveInfo> GetDrivesList()
+        {
+            return _activeColumn.GetDrivesList();
+        }
+
         private void SetActiveElement(int id)
         {
             _activeColumn.ActiveDrive = id;
