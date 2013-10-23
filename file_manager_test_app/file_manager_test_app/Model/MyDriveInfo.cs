@@ -3,7 +3,7 @@ using System.IO;
 
 namespace file_manager_test_app.Model
 {
-    class MyDriveInfo
+    public class MyDriveInfo
     {
         private long _availableFreeSpace;
         private string _driveFormat;
@@ -75,10 +75,10 @@ namespace file_manager_test_app.Model
             _availableFreeSpace = availableFreeSpace;
             _driveFormat = driveFormat;
             _driveType = driveType;
-            _name = name;
+            _name = name.ToLower().Substring(0, name.Length - 2);
             _totalFreeSpace = totalFreeSpace;
             _totalSize = totalSize;
-            _volumeLabel = volumeLabel;
+            _volumeLabel = volumeLabel.ToLower();
         }
     }
 }
