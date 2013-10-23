@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace file_manager_test_app.Model
 {
-    class Column : IColumnInfo, IColumnBuild, IColumnOperations
+    public class Column : IColumnInfo, IColumnBuild, IColumnOperations
     {
         private List<FileSystemInfo> _elements;
         private int _activeElement;
@@ -20,7 +20,11 @@ namespace file_manager_test_app.Model
             _selectedElements = new List<int>();
             _activeDrive = -1;
             _activeElement = -1;
-            _currentPath = "";
+
+            BuildDrives();
+            _currentPath = _drives[0].Name.ToLower();
+
+            BuildElements();        
         }
 
         public string CurrentPath
@@ -238,8 +242,8 @@ namespace file_manager_test_app.Model
 
             foreach (FileSystemInfo item in _elements)
             {
-                MyFileSystemInfo myItem = new MyFileSystemInfo(item.Name, item.Extension, item.FullName, 
-                    item.CreationTime, item.CreationTimeUtc, item.LastAccessTime,
+                MyFileSystemInfo myItem = new MyFileSystemInfo(item.Name, item.Extension, item.FullName,
+                    item.Attributes, item.CreationTime, item.CreationTimeUtc, item.LastAccessTime,
                     item.LastAccessTimeUtc, item.LastWriteTime, item.LastWriteTimeUtc);
 
                 //File has its size, directory doesn't
