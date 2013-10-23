@@ -23,6 +23,9 @@ namespace file_manager_test_app
         public MainWindow()
         {
             InitializeComponent();
+
+            Views.MainView mainView = new Views.MainView(this);
+            mainView.Init();
         }
     }
 }

@@ -40,14 +40,12 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0" Orientation="Horizontal">
-                <Button Content="Drive" Margin="5"></Button>
-                <Button Content="Drive" Margin="5"></Button>
+            <StackPanel Grid.Column="0" Orientation="Horizontal" x:Name="LeftDriveButtonsPanel">
+                <!--<Button Content="Drive" Margin="5"></Button>-->
             </StackPanel>
 
-            <StackPanel Grid.Column="1" Orientation="Horizontal">
-                <Button Content="Drive" Margin="5"></Button>
-                <Button Content="Drive" Margin="5"></Button>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" x:Name="RightDriveButtonsPanel">
+                <!--<Button Content="Drive" Margin="5"></Button>-->
             </StackPanel>
         </Grid>
 
@@ -59,12 +57,11 @@
 
             <StackPanel Grid.Column="0">
                 <StackPanel Orientation="Horizontal">
-                    <ComboBox SelectedIndex="0" Margin="5,5,0,5">
-                        <ComboBoxItem Content="Drive"/>
-                        <ComboBoxItem Content="Drive"></ComboBoxItem>
+                    <ComboBox SelectedIndex="0" Margin="5,5,0,5" x:Name="LeftDriveComboBox">
+                        <!--<ComboBoxItem Content="Drive"></ComboBoxItem>-->
                     </ComboBox>
 
-                    <Label Content="[bootcamp] 48,119,108 k of 99,123,112 k free" Margin="5"></Label>
+                    <Label Content="[bootcamp] 48,119,108 k of 99,123,112 k free" Margin="5" x:Name="LeftDriveInfoLabel"></Label>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
@@ -72,61 +69,8 @@
                 </StackPanel>
 
                 <StackPanel Margin="0,5">
-                    <ListBox SelectedIndex="0" UseLayoutRounding="False" MaxHeight="480">
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
+                    <ListBox SelectedIndex="0" UseLayoutRounding="False" MaxHeight="480" x:Name="LeftElementListBox">
+                        <!--<ListBoxItem Content="[Users]"></ListBoxItem>-->
                     </ListBox>
                 </StackPanel>
             </StackPanel>
@@ -135,12 +79,11 @@
 
             <StackPanel Grid.Column="1" Margin="6,0,0,0">
                 <StackPanel Orientation="Horizontal">
-                    <ComboBox SelectedIndex="0" Margin="5,5,0,5">
-                        <ComboBoxItem Content="Drive"/>
-                        <ComboBoxItem Content="Drive"></ComboBoxItem>
+                    <ComboBox SelectedIndex="0" Margin="5,5,0,5" x:Name="RightDriveComboBox">                        
+                        <!--<ComboBoxItem Content="Drive"></ComboBoxItem>-->
                     </ComboBox>
 
-                    <Label Content="[bootcamp] 48,119,108 k of 99,123,112 k free" Margin="5"></Label>
+                    <Label Content="[bootcamp] 48,119,108 k of 99,123,112 k free" Margin="5" x:Name="RightDriveInfoLabel"></Label>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
@@ -148,61 +91,8 @@
                 </StackPanel>
 
                 <StackPanel Margin="0,5">
-                    <ListBox SelectedIndex="0" UseLayoutRounding="False" MaxHeight="480">
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
-                        <ListBoxItem Content="[Users]"></ListBoxItem>
+                    <ListBox SelectedIndex="0" UseLayoutRounding="False" MaxHeight="480" x:Name="RightElementListBox">
+                        <!--<ListBoxItem Content="[Users]"></ListBoxItem>-->
                     </ListBox>
                 </StackPanel>
             </StackPanel>
