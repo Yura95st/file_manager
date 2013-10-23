@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace file_manager_test_app.Model
 {
@@ -12,6 +10,9 @@ namespace file_manager_test_app.Model
         private long _size;
         private string _extension;
         private string _fullName;
+        private bool _isHidden;
+        private bool _isSystem;
+        private bool _isReadOnly;
         private DateTime _creationTime;
         private DateTime _creationTimeUtc;
         private DateTime _lastAccessTime;
@@ -52,6 +53,30 @@ namespace file_manager_test_app.Model
             get
             {
                 return _fullName;
+            }
+        }
+
+        public bool IsHidden
+        {
+            get
+            {
+                return _isHidden;
+            }
+        }
+
+        public bool IsSystem
+        {
+            get
+            {
+                return _isSystem;
+            }
+        }
+
+        public bool IsReadOnly
+        {
+            get
+            {
+                return _isReadOnly;
             }
         }
 
@@ -103,7 +128,7 @@ namespace file_manager_test_app.Model
             }
         }
 
-        public MyFileSystemInfo(string name, string extension, string fullName, 
+        public MyFileSystemInfo(string name, string extension, string fullName, FileAttributes attributes,
             DateTime creationTime, DateTime creationTimeUtc, DateTime lastAccessTime,
             DateTime lastAccessTimeUtc, DateTime lastWriteTime, DateTime lastWriteTimeUtc)
         {
@@ -117,6 +142,10 @@ namespace file_manager_test_app.Model
             _lastAccessTimeUtc = lastAccessTimeUtc;
             _lastWriteTime = lastWriteTime;
             _lastWriteTimeUtc = lastWriteTimeUtc;
+
+            _isHidden = ((attributes & FileAttributes.Hidden) == FileAttributes.Hidden);
+            _isSystem = ((attributes & FileAttributes.System) == FileAttributes.System);
+            _isReadOnly = ((attributes & FileAttributes.ReadOnly) == FileAttributes.ReadOnly);
         }
     }
 }
