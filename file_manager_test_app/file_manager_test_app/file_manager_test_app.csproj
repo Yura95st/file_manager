@@ -77,7 +77,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controllers\FileSystemController.cs" />
+    <Compile Include="Controllers\ColumnController.cs" />
     <Compile Include="Model\Column.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

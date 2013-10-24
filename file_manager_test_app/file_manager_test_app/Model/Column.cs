@@ -22,7 +22,7 @@ namespace file_manager_test_app.Model
             _activeElement = -1;
 
             BuildDrives();
-            _currentPath = _drives[0].Name.ToLower();
+            _currentPath = _drives[0].RootDirectory.Name;
 
             BuildElements();        
         }
@@ -39,6 +39,7 @@ namespace file_manager_test_app.Model
                 {
                     CheckPath(value);
                     _currentPath = value;
+                    BuildElements();
                 }
                 catch (Exception e)
                 { }
@@ -70,6 +71,8 @@ namespace file_manager_test_app.Model
             {
                 //TODO: Check valid value
                 _activeDrive = value;
+                CurrentPath = _drives[_activeDrive].Name;
+                BuildElements();
             }
         }
 
@@ -157,6 +160,7 @@ namespace file_manager_test_app.Model
 
         public void BuildElements()
         {
+            _elements.Clear();
             this.BuildDirectories();
             this.BuildFiles();
         }
@@ -265,7 +269,7 @@ namespace file_manager_test_app.Model
             foreach (DriveInfo d in _drives)
             {
                 MyDriveInfo myDrive = new MyDriveInfo(d.AvailableFreeSpace, d.DriveFormat, d.DriveType, 
-                    d.Name, d.TotalFreeSpace, d.TotalSize, d.VolumeLabel);
+                    d.Name, d.TotalFreeSpace, d.TotalSize, d.VolumeLabel, d.RootDirectory.Name);
 
                 myDrivesList.Add(myDrive);
             }
@@ -273,9 +277,15 @@ namespace file_manager_test_app.Model
             return myDrivesList;
         }
 
+        public void Read()
+        {
+            var item = _elements[_activeElement];
+            CurrentPath = item.FullName;
+        }
+
         private void BuildFiles()
         {
-            DirectoryInfo di = new DirectoryInfo(_currentPath);
+            DirectoryInfo di = new DirectoryInfo(@_currentPath);
             try
             {
                 foreach (FileInfo f in di.GetFiles())
@@ -301,7 +311,7 @@ namespace file_manager_test_app.Model
 
         private void BuildDirectories()
         {
-            DirectoryInfo di = new DirectoryInfo(_currentPath);
+            DirectoryInfo di = new DirectoryInfo(@_currentPath);
             try
             {
                 foreach (DirectoryInfo d in di.GetDirectories())
