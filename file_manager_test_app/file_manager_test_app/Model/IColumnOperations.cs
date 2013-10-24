@@ -19,5 +19,7 @@ namespace file_manager_test_app.Model
         void ClearSelection();
 
         void Rename(string newName);
+
+        void Read();
     }
 }
