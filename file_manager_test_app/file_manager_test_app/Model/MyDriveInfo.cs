@@ -12,6 +12,7 @@ namespace file_manager_test_app.Model
         private long _totalFreeSpace;
         private long _totalSize;
         private string _volumeLabel;
+        private string _rootDirectory;
 
         public long AvailableFreeSpace
         {
@@ -69,8 +70,16 @@ namespace file_manager_test_app.Model
             }
         }
 
+        public string RootDirectory
+        {
+            get 
+            {
+                return _rootDirectory;
+            }
+        }
+
         public MyDriveInfo(long availableFreeSpace, string driveFormat, DriveType driveType,
-            string name, long totalFreeSpace, long totalSize, string volumeLabel)
+            string name, long totalFreeSpace, long totalSize, string volumeLabel, string rootDirectory)
         {
             _availableFreeSpace = availableFreeSpace;
             _driveFormat = driveFormat;
@@ -79,6 +88,7 @@ namespace file_manager_test_app.Model
             _totalFreeSpace = totalFreeSpace;
             _totalSize = totalSize;
             _volumeLabel = volumeLabel.ToLower();
+            _rootDirectory = rootDirectory;
         }
     }
 }
