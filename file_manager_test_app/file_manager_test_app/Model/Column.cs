@@ -6,25 +6,30 @@ namespace file_manager_test_app.Model
 {
     public class Column : IColumnInfo, IColumnBuild, IColumnOperations
     {
-        private List<FileSystemInfo> _elements;
-        private int _activeElement;
-        private List<int> _selectedElements;
+        private List<FileSystemInfo> _elements = new List<FileSystemInfo>();
+        private int _activeElement = -1;
+        private List<int> _selectedElements = new List<int>();
         private string _currentPath;
-        private List<DriveInfo> _drives;
-        private int _activeDrive;
+        private List<DriveInfo> _drives = new List<DriveInfo>();
+        private int _activeDrive = -1;
+        private List<string> _navigationHistory = new List<string>();
+        private int _navigationHistoryPointer = -1;
+        private Model.MyBuffer _buffer = Model.MyBuffer.GetInstance();
 
         public Column()
         {
-            _elements = new List<FileSystemInfo>();
-            _drives = new List<DriveInfo>();
-            _selectedElements = new List<int>();
-            _activeDrive = -1;
-            _activeElement = -1;
-
             BuildDrives();
             _currentPath = _drives[0].RootDirectory.Name;
+            NavigationHistoryAddItem();
 
-            BuildElements();        
+            try
+            {
+                BuildElements();
+            }
+            catch (Exception e)
+            { }
+            finally
+            { }     
         }
 
         public string CurrentPath
@@ -37,12 +42,28 @@ namespace file_manager_test_app.Model
             {
                 try
                 {
+                    string prevPath = _currentPath;
+
                     CheckPath(value);
                     _currentPath = value;
-                    BuildElements();
+
+                    if (IsCurrentPathDirectory())
+                    {
+                        CheckCurrentPathAsSpecialDirectory();
+                        NavigationHistoryAddItem();
+                        BuildElements();
+                    }
+                    else
+                    {
+                        System.Diagnostics.Process.Start(@_currentPath);
+                        _currentPath = prevPath;
+                    }
                 }
                 catch (Exception e)
-                { }
+                {
+                    NavigationHistoryGoBack();
+                    throw e;
+                }
                 finally
                 { }
             }
@@ -57,7 +78,9 @@ namespace file_manager_test_app.Model
             set
             {
                 if (value < _elements.Count)
+                {
                     _activeElement = value;
+                }
             }
         }
 
@@ -70,14 +93,23 @@ namespace file_manager_test_app.Model
             set
             {
                 //TODO: Check valid value
-                _activeDrive = value;
-                CurrentPath = _drives[_activeDrive].Name;
-                BuildElements();
+                try
+                {                    
+                    CurrentPath = _drives[value].Name;
+                    _activeDrive = value;
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
             }
         }
 
-        public void Select(int[] elements)
-        { }
+        public void SelectElements(List<int> elements)
+        {
+            _selectedElements.Clear();
+            _selectedElements = elements;
+        }
 
         public void DeleteSelectedElements()
         {
@@ -88,7 +120,28 @@ namespace file_manager_test_app.Model
                     _elements[i].Delete();
                 }
                 catch (Exception e)
+                {
+                    throw e;
+                }
+                finally
                 { }
+            }
+        }
+
+        public void DeleteBufferedElements()
+        {
+            List<FileSystemInfo> bufferedElements = _buffer.GetElements();
+
+            foreach (FileSystemInfo element in bufferedElements)
+            {
+                try
+                {
+                    element.Delete();
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
                 finally
                 { }
             }
@@ -99,70 +152,199 @@ namespace file_manager_test_app.Model
             try
             {
                 CheckPath(destination);
-
-                if (destination != _currentPath)
+                foreach (int i in _selectedElements)
                 {
-                    foreach (int i in _selectedElements)
+                    DirectoryInfo d = _elements[i] as DirectoryInfo;
+                    if (d != null)
                     {
-                        try
-                        {
-                            DirectoryInfo d = _elements[i] as DirectoryInfo;
-                            if (d != null)
-                            {
-                                d.MoveTo(destination);
-                                return;
-                            }
+                        CopyDirectoryElementTo(d, destination);
+                        continue;
+                    }
 
-                            FileInfo f = _elements[i] as FileInfo;
-                            if (f != null)
-                            {
-                                f.MoveTo(destination);
-                                return;
-                            }
-                        }
-                        catch (Exception e)
-                        { }
-                        finally
-                        { }
+                    FileInfo f = _elements[i] as FileInfo;
+                    if (f != null)
+                    {
+                        CopyFileElementTo(f, destination);
+                        continue;
                     }
                 }
             }
             catch (Exception e)
+            {
+                throw e;
+            }
+            finally
             { }
+        }
+
+        public void CopyBufferedElementsTo(string destination)
+        {
+            try
+            {
+                CheckPath(destination);
+
+                List<FileSystemInfo> bufferedElements = _buffer.GetElements();
+
+                foreach (FileSystemInfo element in bufferedElements)
+                {
+
+                    DirectoryInfo d = element as DirectoryInfo;
+                    if (d != null)
+                    {
+                        CopyDirectoryElementTo(d, destination);
+                        continue;
+                    }
+
+                    FileInfo f = element as FileInfo;
+                    if (f != null)
+                    {
+                        CopyFileElementTo(f, destination);
+                        continue;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            { }
+        }
+
+        private void CopyFileElementTo(FileInfo f, string destination)
+        {
+            try
+            {
+                string path = System.IO.Path.Combine(destination, f.Name);
+
+                int i = 0;
+                string newName = System.IO.Path.GetFileNameWithoutExtension(f.Name);
+
+                while (File.Exists(path))
+                {
+                    if (i == 0)
+                    {
+                        newName += "-Copy"; 
+                    }
+
+                    path = System.IO.Path.Combine(destination, newName + ((i==0) ? "" : i.ToString()) + f.Extension);
+                    i++;
+                }
+
+                f.CopyTo(path);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            { }
+        }
+
+        private void CopyDirectoryElementTo(DirectoryInfo d, string destination)
+        {
+            try
+            {
+                string tempPath = Path.Combine(destination, d.Name);
+
+                // If the destination directory doesn't exist, create it. 
+                if (!Directory.Exists(tempPath))
+                {
+                    Directory.CreateDirectory(tempPath);
+                }
+
+                // Get the files in the directory and copy them to the new location.
+                FileInfo[] files = d.GetFiles();
+                foreach (FileInfo f in files)
+                {
+                    CopyFileElementTo(f, tempPath);
+                }
+
+                // Get the subdirectories in the directory and copy them to the new location.
+                DirectoryInfo[] subDirectories = d.GetDirectories();
+                foreach (DirectoryInfo subdir in subDirectories)
+                {
+                    CopyDirectoryElementTo(subdir, tempPath);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
             finally
             { }
         }
 
         public void MoveSelectedElementsTo(string destination)
         {
-            this.CopySelectedElementsTo(destination);
-            this.DeleteSelectedElements();
+            if (destination != _currentPath)
+            {
+                try
+                {
+                    this.CopySelectedElementsTo(destination);
+                    this.DeleteSelectedElements();
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+            }
+        }
+
+        public void MoveBufferedElementsTo(string destination)
+        {
+            if (destination != _currentPath)
+            {
+                try
+                {
+                    this.CopyBufferedElementsTo(destination);
+                    this.DeleteBufferedElements();
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+            }
         }
 
         public void BuildDrives()
         {
             DriveInfo[] allDrives = DriveInfo.GetDrives();
 
-            foreach (DriveInfo d in allDrives)
+            try
             {
-                try
+                foreach (DriveInfo d in allDrives)
                 {
-                    _drives.Add(d);
+                    try
+                    {
+                        _drives.Add(d);
+                    }
+                    catch (Exception e)
+                    {
+                        throw e;
+                    }
+                    finally
+                    { }
                 }
-                catch (Exception e)
-                {
-
-                }
-                finally
-                { }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
         public void BuildElements()
         {
             _elements.Clear();
-            this.BuildDirectories();
-            this.BuildFiles();
+            try
+            {
+                this.BuildDirectories();
+                this.BuildFiles();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public void CreateNewDirectory(string name)
@@ -180,6 +362,7 @@ namespace file_manager_test_app.Model
             catch (Exception e)
             {
                 //TODO: throw an exception
+                throw e;
             }
             finally
             { }
@@ -200,14 +383,10 @@ namespace file_manager_test_app.Model
             catch (Exception e)
             {
                 //TODO: throw an exception
+                throw e;
             }
             finally
             { }
-        }
-
-        public void ClearSelection()
-        {
-            _selectedElements.RemoveRange(0, _selectedElements.Count);
         }
 
         public void Rename(string newName)
@@ -235,7 +414,9 @@ namespace file_manager_test_app.Model
                 }
             }
             catch (Exception e)
-            { }
+            {
+                throw e;
+            }
             finally
             { }
         }
@@ -280,7 +461,46 @@ namespace file_manager_test_app.Model
         public void Read()
         {
             var item = _elements[_activeElement];
-            CurrentPath = item.FullName;
+
+            try
+            {
+                CurrentPath = item.FullName;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public void NavigationHistoryGoBack()
+        {
+            if (_navigationHistoryPointer >= 1)
+            {
+                _currentPath = _navigationHistory[_navigationHistoryPointer - 1];
+
+                try
+                {
+                    BuildElements();
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+                finally
+                {
+                    _navigationHistoryPointer--;
+                }
+            }
+        }
+
+        public void WriteToBuffer()
+        {
+            _buffer.Clear();
+
+            foreach (int i in _selectedElements)
+            {
+                _buffer.AddElement(_elements[i]);
+            }
         }
 
         private void BuildFiles()
@@ -290,23 +510,13 @@ namespace file_manager_test_app.Model
             {
                 foreach (FileInfo f in di.GetFiles())
                 {
-                    try
-                    {
-                        _elements.Add(f);
-                    }
-                    catch (Exception e)
-                    {
-
-                    }
-                    finally
-                    { }
+                    _elements.Add(f);
                 }
             }
             catch (Exception e)
             {
-
+                throw e;
             }
-            finally { }
         }
 
         private void BuildDirectories()
@@ -316,23 +526,21 @@ namespace file_manager_test_app.Model
             {
                 foreach (DirectoryInfo d in di.GetDirectories())
                 {
-                    try
-                    {
-                        _elements.Add(d);
-                    }
-                    catch (Exception e)
-                    {
-
-                    }
-                    finally
-                    { }
+                    _elements.Add(d);
                 }
             }
             catch (Exception e)
             {
-
+                throw e;
             }
-            finally { }
+        }
+
+        private bool IsCurrentPathDirectory()
+        {
+            FileAttributes attr = File.GetAttributes(@_currentPath);
+
+            //detect whether its a directory - (true) or file - (false)
+            return (attr & FileAttributes.Directory) == FileAttributes.Directory;
         }
 
         private void CheckPath(string path)
@@ -369,6 +577,29 @@ namespace file_manager_test_app.Model
                 || name.IndexOf(Path.AltDirectorySeparatorChar) >= 0)
             {
                 throw new ArgumentException("The name contains path separators.", "newName");
+            }
+        }
+
+        private void NavigationHistoryAddItem()
+        {
+            _navigationHistoryPointer++;
+            _navigationHistory.Insert(_navigationHistoryPointer, _currentPath);
+        }
+
+        private void CheckCurrentPathAsSpecialDirectory()
+        {
+            DirectoryInfo di = new DirectoryInfo(@_currentPath);
+
+            if ((di.Attributes & FileAttributes.ReparsePoint) == FileAttributes.ReparsePoint)
+            {
+                foreach (Environment.SpecialFolder folder in Enum.GetValues(typeof(Environment.SpecialFolder)))
+                {
+                    if (di.Name.Replace(" ", "").Equals(Enum.GetName(typeof(Environment.SpecialFolder), folder)))
+                    {
+                        _currentPath = Environment.GetFolderPath(folder);
+                        return;
+                    }
+                }
             }
         }
     }

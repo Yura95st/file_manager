@@ -1,14 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace file_manager_test_app.Model
 {
     interface IColumnOperations
     {
-        void Select(int[] elements);
+        void SelectElements(List<int> elements);
 
         void DeleteSelectedElements();
 
+        void CopyBufferedElementsTo(string destination);
+
         void CopySelectedElementsTo(string destination);
+
+        void MoveBufferedElementsTo(string destination);
 
         void MoveSelectedElementsTo(string destination);
 
@@ -16,10 +21,12 @@ namespace file_manager_test_app.Model
 
         void CreateNewTxtFile(string name);
 
-        void ClearSelection();
-
         void Rename(string newName);
 
         void Read();
+
+        void NavigationHistoryGoBack();
+
+        void WriteToBuffer();
     }
 }
