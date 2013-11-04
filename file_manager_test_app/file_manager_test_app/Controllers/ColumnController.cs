@@ -7,12 +7,23 @@ namespace file_manager_test_app.Controllers
     public class ColumnController
     {
         private Model.Column _column;
+
+        private Controllers.ColumnController _secondColumnController;
+
         private Views.DriveView _driveView;
         private Views.FileSystemElementView _fsElementView;
 
         public ColumnController()
         {
             _column = new Model.Column();
+        }
+
+        public Controllers.ColumnController SecondColumnController
+        {
+            set
+            {
+                _secondColumnController = value;
+            }
         }
 
         public Views.DriveView DriveView
@@ -25,23 +36,80 @@ namespace file_manager_test_app.Controllers
 
         public Views.FileSystemElementView FsElementView
         {
+            get
+            {
+                return _fsElementView;
+            }
             set
             {
                 _fsElementView = value;
             }
         }
 
-        public void Select(int[] elements)
+        public void SelectElements(List<int> elements)
         {
-            if (elements.Length > 0)
+            try
             {
-                _column.Select(elements);
+                _column.SelectElements(elements);
+            }
+            catch (Exception e)
+            {
+                _fsElementView.SetAlertMessage(e.Message);
             }
         }
 
-        public void CopyTo(string destination)
+        public void WriteToBuffer()
         {
-            _column.CopySelectedElementsTo(destination);
+            try
+            {
+                _column.WriteToBuffer();
+            }
+            catch (Exception e)
+            {
+                _fsElementView.SetAlertMessage(e.Message);
+            }
+        }
+
+        public void CopyTo(int type=0)
+        {
+            string destination = "";
+            try
+            {
+                //type = 1 - buffered elements copying
+                if (type == 1)
+                {
+                    if (Views.MainView.ActiveColumnId == 0)
+                    {
+                        destination = this.GetCurrentPath();
+                    }
+                    else if (Views.MainView.ActiveColumnId == 1)
+                    {
+                        destination = _secondColumnController.GetCurrentPath();
+                    }
+                    else 
+                    {
+                        //TODO: throw Exception;
+                    }
+
+                    _column.CopyBufferedElementsTo(destination);
+                }
+                else
+                {
+                    destination = _secondColumnController.GetCurrentPath();
+                    _column.CopySelectedElementsTo(destination);
+                }
+
+                _column.BuildElements();
+                //_column.BuildDrives();
+                this.FsElementView.Refresh();
+
+                _secondColumnController._column.BuildElements();
+                _secondColumnController.FsElementView.Refresh();
+            }
+            catch (Exception e)
+            {
+                _fsElementView.SetAlertMessage(e.Message);
+            }
         }
 
         public void SetActiveElement(int id)
@@ -51,58 +119,120 @@ namespace file_manager_test_app.Controllers
 
         public void Delete()
         {
-            _column.DeleteSelectedElements();
+            try
+            {
+                _column.DeleteSelectedElements();
+
+                _column.BuildElements();
+                //_column.BuildDrives();
+                this.FsElementView.Refresh();
+
+                _secondColumnController._column.BuildElements();
+                _secondColumnController.FsElementView.Refresh();
+            }
+            catch (Exception e)
+            {
+                _fsElementView.SetAlertMessage(e.Message);
+            }
         }
 
-        public void MoveTo(string destination)
+        public void MoveTo(int type=0)
         {
-            _column.MoveSelectedElementsTo(destination);
+            string destination = _secondColumnController.GetCurrentPath();
+
+            try
+            {
+                //type = 1 - buffered elements copying
+                if (type == 1)
+                {
+                    _column.MoveBufferedElementsTo(destination);
+                }
+                else
+                {
+                    _column.MoveSelectedElementsTo(destination);
+                }
+
+                _column.BuildElements();
+                //_column.BuildDrives();
+                this.FsElementView.Refresh();
+
+                _secondColumnController._column.BuildElements();
+                _secondColumnController.FsElementView.Refresh();
+            }
+            catch (Exception e)
+            {
+                _fsElementView.SetAlertMessage(e.Message);
+            }
         }
 
         public void Read()
         {
-            _column.Read();
-            _fsElementView.Refresh();
+            try
+            {
+                _column.Read();
+                _fsElementView.Refresh();
+            }
+            catch (Exception e)
+            {
+                _fsElementView.SetAlertMessage(e.Message);
+            }
         }
 
         public void CreateNewTxtFile(string name)
         {
-            _column.CreateNewTxtFile(name);
+            try
+            {
+                _column.CreateNewTxtFile(name);
+            }
+            catch (Exception e)
+            {
+                _fsElementView.SetAlertMessage(e.Message);
+            }
         }
 
         public void CreateNewDirectory(string name)
         {
-            _column.CreateNewDirectory(name);
+            try
+            {
+                _column.CreateNewDirectory(name);
+            }
+            catch (Exception e)
+            {
+                _fsElementView.SetAlertMessage(e.Message);
+            }
         }
 
         public void Merge()
         {
-            
+
         }
 
         public void Rename(string newName)
         {
-            _column.Rename(newName);
+            try
+            {
+                _column.Rename(newName);
+
+            }
+            catch (Exception e)
+            {
+                _fsElementView.SetAlertMessage(e.Message);
+            }
         }
 
         public void Search(string query)
         {
-            
+
         }
 
         public void SpecialMegre()
         {
-            
-        }
 
-        public void ClearSelection()
-        {
-            _column.ClearSelection();
         }
 
         public void Edit()
         {
-           
+
         }
 
         public List<Model.MyFileSystemInfo> GetElementsList()
@@ -117,14 +247,29 @@ namespace file_manager_test_app.Controllers
 
         public void SetActiveDrive(int id)
         {
-            _column.ActiveDrive = id;
-            _fsElementView.Refresh();
+            try
+            {
+                _column.ActiveDrive = id;
+                _fsElementView.Refresh();
+            }
+            catch (Exception e)
+            {
+                _fsElementView.SetAlertMessage(e.Message);
+                throw e;
+            }
         }
 
         public void SetCurrentPath(string path)
         {
-            _column.CurrentPath = path;
-            _fsElementView.Refresh();
+            try
+            {
+                _column.CurrentPath = path;
+                _fsElementView.Refresh();
+            }
+            catch (Exception e)
+            {
+                _fsElementView.SetAlertMessage(e.Message);
+            }
         }
 
         public bool isCurrentPathRoot()
@@ -134,14 +279,32 @@ namespace file_manager_test_app.Controllers
             return root == path;
         }
 
+        public string GetCurrentPath()
+        {
+            return _column.CurrentPath;
+        }
+
+        public void NavigationHistoryGoBack()
+        {
+            try
+            {
+                _column.NavigationHistoryGoBack();
+                _fsElementView.Refresh();
+            }
+            catch (Exception e)
+            {
+                _fsElementView.SetAlertMessage(e.Message);
+            }
+        }
+
         public void SortByDate()
         {
-       
+
         }
 
         public void SortByExtention()
         {
-        
+
         }
 
         public void SortByName()
@@ -151,7 +314,7 @@ namespace file_manager_test_app.Controllers
 
         public void SortBySize()
         {
-         
+
         }
 
     }
