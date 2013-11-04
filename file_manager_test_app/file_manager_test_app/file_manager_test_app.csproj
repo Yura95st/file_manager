@@ -63,12 +63,14 @@
     <Compile Include="Model\IColumnInfo.cs" />
     <Compile Include="Model\IColumnBuild.cs" />
     <Compile Include="Model\IColumnOperations.cs" />
+    <Compile Include="Model\MyBuffer.cs" />
     <Compile Include="Model\MyDriveInfo.cs" />
     <Compile Include="Model\MyFileSystemInfo.cs" />
     <Compile Include="Views\DriveView.cs" />
     <Compile Include="Views\FileSystemElementView.cs" />
     <Compile Include="Views\FileSystemView.cs" />
     <Compile Include="Views\MainView.cs" />
+    <Compile Include="Views\PathView.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

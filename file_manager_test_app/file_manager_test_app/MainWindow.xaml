@@ -65,13 +65,23 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="c:\yura_cloud\googledrive\*.*" Margin="5,0"></Label>
+                    <TextBox Text="c:\yura_cloud\googledrive\*.*" Margin="5,0" x:Name="LeftListBoxPath"></TextBox>
                 </StackPanel>
 
                 <StackPanel Margin="0,5">
-                    <ListBox SelectedIndex="0" UseLayoutRounding="False" MaxHeight="480" x:Name="LeftElementListBox">
-                        <!--<ListBoxItem Content="[Users]"></ListBoxItem>-->
-                    </ListBox>
+                    <!--<ListBox SelectedIndex="0" UseLayoutRounding="False" MaxHeight="480" x:Name="LeftElementListBox">
+                        <ListBoxItem Content="[Users]"></ListBoxItem>
+                    </ListBox>-->
+                    <ListView Name="LeftElementList" Height="450">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name" />
+                                <GridViewColumn Header="Ext" DisplayMemberBinding="{Binding Extension}" />
+                                <GridViewColumn Header="Size" DisplayMemberBinding="{Binding Size}" />                                
+                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding CreationTime}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </StackPanel>
             </StackPanel>
 
@@ -87,13 +97,20 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="c:\yura_cloud\googledrive\*.*" Margin="5,0"></Label>
+                    <TextBox Text="c:\yura_cloud\googledrive\*.*" Margin="5,0" x:Name="RightListBoxPath"></TextBox>
                 </StackPanel>
 
                 <StackPanel Margin="0,5">
-                    <ListBox SelectedIndex="0" UseLayoutRounding="False" MaxHeight="480" x:Name="RightElementListBox">
-                        <!--<ListBoxItem Content="[Users]"></ListBoxItem>-->
-                    </ListBox>
+                    <ListView Name="RightElementList">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name" />
+                                <GridViewColumn Header="Ext" DisplayMemberBinding="{Binding Extension}" />
+                                <GridViewColumn Header="Size" DisplayMemberBinding="{Binding Size}" />
+                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding CreationTime}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </StackPanel>
             </StackPanel>
         </Grid>
@@ -104,8 +121,8 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,5">
-                <Label Content="c:\&gt;" Margin="0,0,5,0" Padding="5,0"></Label>
-                <TextBox Width="800" Padding="1,0"/>
+                <Label Content="c:\&gt;" Margin="0,0,5,0" Padding="5,0" x:Name="TextBoxPathLabel"></Label>
+                <TextBox Width="800" Padding="1,0" x:Name="TextBoxPath"/>
             </StackPanel>
         </Grid>
 
