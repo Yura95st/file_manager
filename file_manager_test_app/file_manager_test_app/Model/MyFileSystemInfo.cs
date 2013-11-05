@@ -128,6 +128,9 @@ namespace file_manager_test_app.Model
             }
         }
 
+        public MyFileSystemInfo()
+        { }
+
         public MyFileSystemInfo(string name, string extension, string fullName, FileAttributes attributes,
             DateTime creationTime, DateTime creationTimeUtc, DateTime lastAccessTime,
             DateTime lastAccessTimeUtc, DateTime lastWriteTime, DateTime lastWriteTimeUtc)

@@ -25,6 +25,8 @@ namespace file_manager_test_app.Model
 
         List<MyFileSystemInfo> GetElementsList();
 
+        List<int> GetSelectedElements();
+
         List<MyDriveInfo> GetDrivesList();
     }
 }

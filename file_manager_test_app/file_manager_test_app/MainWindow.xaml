@@ -101,7 +101,7 @@
                 </StackPanel>
 
                 <StackPanel Margin="0,5">
-                    <ListView Name="RightElementList">
+                    <ListView Name="RightElementList" Height="450">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Name" />

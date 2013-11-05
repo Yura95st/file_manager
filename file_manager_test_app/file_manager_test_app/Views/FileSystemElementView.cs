@@ -148,27 +148,28 @@ namespace file_manager_test_app.Views
 
         private void ElementCut()
         {
-            //_controller.WriteToBuffer();
+            _controller.WriteToBuffer(1);
         }
 
         private void ElementPaste()
         {
-            _controller.CopyTo(1); // 1 - means buffered copying
+            _controller.PasteFromBuffer();
         }
 
         private void ElementCopyTo()
         {
-            _controller.CopyTo();
+            _controller.CopyConfirm();
         }
 
         private void ElementMoveTo()
         {
-            _controller.MoveTo();
+            _controller.MoveConfirm();
         }
 
-        private void ElementDelete()
+        private void ElementDelete(bool delPermanent)
         {
-            _controller.Delete();
+            _controller.DeleteConfirm(delPermanent);
+            // _controller.Delete(delPermanent);
         }
 
         private void FileSystemElement_DoubleClick(object sender, RoutedEventArgs e)
@@ -182,11 +183,15 @@ namespace file_manager_test_app.Views
             {
                 FileSystemElementRead(sender);
             }
-            else if (e.Key == Key.C && Keyboard.Modifiers == ModifierKeys.Control)
+            else if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.C)
             {
                 ElementCopy();
             }
-            else if (e.Key == Key.V && Keyboard.Modifiers == ModifierKeys.Control)
+            else if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.X)
+            {
+                ElementCut();
+            }
+            else if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.V)
             {
                 ElementPaste();
             }
@@ -198,9 +203,13 @@ namespace file_manager_test_app.Views
             {
                 ElementMoveTo();
             }
-            else if (e.Key == Key.F8)
+            else if (Keyboard.Modifiers == ModifierKeys.Shift && (e.Key == Key.F8 || e.Key == Key.Delete))
             {
-                ElementDelete();
+                ElementDelete(true);
+            }
+            else if (e.Key == Key.F8 || e.Key == Key.Delete)
+            {
+                ElementDelete(false);
             }
         }
     }

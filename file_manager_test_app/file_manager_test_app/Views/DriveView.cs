@@ -62,12 +62,22 @@ namespace file_manager_test_app.Views
 
         public void SetActiveDrive(int id)
         {
-            _activeDrive = id;
-            SetActiveDriveAsButton();
-            SetActiveDriveAsComboBoxItem();
-            SetDriveInfoLabel();
-
-            _controller.SetActiveDrive(_activeDrive);
+            int oldId = _activeDrive;
+            try
+            {
+                _activeDrive = id;
+                _controller.SetActiveDrive(_activeDrive);
+            }
+            catch (Exception e)
+            {
+                _activeDrive = oldId;
+            }
+            finally
+            {
+                SetActiveDriveAsButton();
+                SetActiveDriveAsComboBoxItem();
+                SetDriveInfoLabel();
+            }
         }
 
         public void SetDriveInfoLabel()

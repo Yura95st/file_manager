@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace file_manager_test_app.Controllers
 {
@@ -58,11 +59,11 @@ namespace file_manager_test_app.Controllers
             }
         }
 
-        public void WriteToBuffer()
+        public void WriteToBuffer(int type = 0)
         {
             try
             {
-                _column.WriteToBuffer();
+                _column.WriteToBuffer(type);
             }
             catch (Exception e)
             {
@@ -70,34 +71,49 @@ namespace file_manager_test_app.Controllers
             }
         }
 
-        public void CopyTo(int type=0)
+        public void PasteFromBuffer()
         {
             string destination = "";
             try
             {
-                //type = 1 - buffered elements copying
-                if (type == 1)
+                if (Views.MainView.ActiveColumnId == 0)
                 {
-                    if (Views.MainView.ActiveColumnId == 0)
-                    {
-                        destination = this.GetCurrentPath();
-                    }
-                    else if (Views.MainView.ActiveColumnId == 1)
-                    {
-                        destination = _secondColumnController.GetCurrentPath();
-                    }
-                    else 
-                    {
-                        //TODO: throw Exception;
-                    }
-
-                    _column.CopyBufferedElementsTo(destination);
+                    destination = this.GetCurrentPath();
+                }
+                else if (Views.MainView.ActiveColumnId == 1)
+                {
+                    destination = _secondColumnController.GetCurrentPath();
                 }
                 else
                 {
-                    destination = _secondColumnController.GetCurrentPath();
-                    _column.CopySelectedElementsTo(destination);
+                    //TODO: throw Exception;
                 }
+
+                _column.PasteBufferedElementsTo(destination);
+
+                _column.BuildElements();
+                //_column.BuildDrives();
+                this.FsElementView.Refresh();
+
+                _secondColumnController._column.BuildElements();
+                _secondColumnController.FsElementView.Refresh();
+            }
+            catch (Exception e)
+            {
+                _fsElementView.SetAlertMessage(e.Message);
+            }
+        }
+
+        public void CopyTo(string destination = "")
+        {
+            if (destination == "")
+            {
+                destination = _secondColumnController.GetCurrentPath();
+            }
+
+            try
+            {
+                _column.CopySelectedElementsTo(destination);
 
                 _column.BuildElements();
                 //_column.BuildDrives();
@@ -117,11 +133,11 @@ namespace file_manager_test_app.Controllers
             _column.ActiveElement = id;
         }
 
-        public void Delete()
+        public void Delete(bool delPermanent = false)
         {
             try
             {
-                _column.DeleteSelectedElements();
+                _column.DeleteSelectedElements(delPermanent);
 
                 _column.BuildElements();
                 //_column.BuildDrives();
@@ -136,21 +152,16 @@ namespace file_manager_test_app.Controllers
             }
         }
 
-        public void MoveTo(int type=0)
+        public void MoveTo(string destination = "")
         {
-            string destination = _secondColumnController.GetCurrentPath();
+            if (destination == "")
+            {
+                destination = _secondColumnController.GetCurrentPath();
+            }
 
             try
             {
-                //type = 1 - buffered elements copying
-                if (type == 1)
-                {
-                    _column.MoveBufferedElementsTo(destination);
-                }
-                else
-                {
-                    _column.MoveSelectedElementsTo(destination);
-                }
+                _column.MoveSelectedElementsTo(destination);
 
                 _column.BuildElements();
                 //_column.BuildDrives();
@@ -317,6 +328,54 @@ namespace file_manager_test_app.Controllers
 
         }
 
+        delegate void CopyOrMoveToMyDelegate(string s);
+
+        public void CopyConfirm()
+        {
+            string path = _secondColumnController.GetCurrentPath();
+            Windows.CopyMoveConfirmationDialog _confirmationWindow = new Windows.CopyMoveConfirmationDialog("Copy n file(s) to:", 
+                path, new CopyOrMoveToMyDelegate(CopyTo));
+
+            _confirmationWindow.Show();
+        }
+
+        public void MoveConfirm()
+        {
+            string path = _secondColumnController.GetCurrentPath();
+            Windows.CopyMoveConfirmationDialog _confirmationWindow = new Windows.CopyMoveConfirmationDialog("Move n file(s) to:", 
+                path, new CopyOrMoveToMyDelegate(MoveTo));
+
+            _confirmationWindow.Show();
+        }
+
+        public void DeleteConfirm(bool delPermanent)
+        {
+            if (!delPermanent)
+            {
+                Delete(delPermanent);
+            }
+            else
+            {
+                string text = "";
+                var elements = _column.GetElementsList();
+                int counter = 0;
+
+                foreach (int i in _column.GetSelectedElements())
+                {
+                    text += elements[i].Name + "\n";
+                    counter++;
+                }
+
+                string caption = "File Commander";
+                string message = "Do you really want to delete the " + counter + " selected files/directories?\n\n" + text;
+                MessageBoxButton buttons = MessageBoxButton.YesNoCancel;
+                MessageBoxImage icon = MessageBoxImage.Question;
+                if (MessageBox.Show(message, caption, buttons, icon) == MessageBoxResult.Yes)
+                {
+                    Delete(delPermanent);
+                }
+            }
+        }
     }
 }
 

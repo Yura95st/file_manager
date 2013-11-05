@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using Microsoft.VisualBasic.FileIO;
 
 namespace file_manager_test_app.Model
 {
@@ -111,13 +112,13 @@ namespace file_manager_test_app.Model
             _selectedElements = elements;
         }
 
-        public void DeleteSelectedElements()
+        public void DeleteSelectedElements(bool delPermanent)
         {
             foreach (int i in _selectedElements)
             {
                 try
                 {
-                    _elements[i].Delete();
+                    DeleteElement(_elements[i], delPermanent);
                 }
                 catch (Exception e)
                 {
@@ -128,7 +129,7 @@ namespace file_manager_test_app.Model
             }
         }
 
-        public void DeleteBufferedElements()
+        public void DeleteBufferedElements(bool delPermanent)
         {
             List<FileSystemInfo> bufferedElements = _buffer.GetElements();
 
@@ -136,7 +137,7 @@ namespace file_manager_test_app.Model
             {
                 try
                 {
-                    element.Delete();
+                    DeleteElement(element, delPermanent);
                 }
                 catch (Exception e)
                 {
@@ -144,6 +145,41 @@ namespace file_manager_test_app.Model
                 }
                 finally
                 { }
+            }
+        }
+
+        private void DeleteElement(FileSystemInfo element, bool delPermanent)
+        {
+            DirectoryInfo d = element as DirectoryInfo;
+            if (d != null)
+            {
+                if (delPermanent)
+                {
+                    d.Delete(true);
+                }
+                else
+                {
+                    //Move to Recycle Bin
+                    FileSystem.DeleteDirectory(d.FullName, UIOption.AllDialogs, RecycleOption.SendToRecycleBin,
+                        UICancelOption.DoNothing);
+                }
+                return;
+            }
+
+            FileInfo f = element as FileInfo;
+            if (f != null)
+            {
+                if (delPermanent)
+                {
+                    f.Delete();
+                }
+                else
+                {
+                    //Move to Recycle Bin
+                    FileSystem.DeleteFile(f.FullName, UIOption.AllDialogs, RecycleOption.SendToRecycleBin,
+                        UICancelOption.DoNothing);
+                }
+                return;
             }
         }
 
@@ -177,30 +213,19 @@ namespace file_manager_test_app.Model
             { }
         }
 
-        public void CopyBufferedElementsTo(string destination)
+        public void PasteBufferedElementsTo(string destination)
         {
             try
             {
                 CheckPath(destination);
 
-                List<FileSystemInfo> bufferedElements = _buffer.GetElements();
-
-                foreach (FileSystemInfo element in bufferedElements)
+                if (_buffer.IsCutPasteType())
                 {
-
-                    DirectoryInfo d = element as DirectoryInfo;
-                    if (d != null)
-                    {
-                        CopyDirectoryElementTo(d, destination);
-                        continue;
-                    }
-
-                    FileInfo f = element as FileInfo;
-                    if (f != null)
-                    {
-                        CopyFileElementTo(f, destination);
-                        continue;
-                    }
+                    this.MoveBufferedElementsTo(destination);
+                }
+                else 
+                {
+                    this.CopyBufferedElementsTo(destination);
                 }
             }
             catch (Exception e)
@@ -209,6 +234,28 @@ namespace file_manager_test_app.Model
             }
             finally
             { }
+        }
+
+        private void CopyBufferedElementsTo(string destination)
+        {
+            List<FileSystemInfo> bufferedElements = _buffer.GetElements();
+
+            foreach (FileSystemInfo element in bufferedElements)
+            {
+                DirectoryInfo d = element as DirectoryInfo;
+                if (d != null)
+                {
+                    CopyDirectoryElementTo(d, destination);
+                    continue;
+                }
+
+                FileInfo f = element as FileInfo;
+                if (f != null)
+                {
+                    CopyFileElementTo(f, destination);
+                    continue;
+                }
+            }
         }
 
         private void CopyFileElementTo(FileInfo f, string destination)
@@ -282,7 +329,7 @@ namespace file_manager_test_app.Model
                 try
                 {
                     this.CopySelectedElementsTo(destination);
-                    this.DeleteSelectedElements();
+                    this.DeleteSelectedElements(true);
                 }
                 catch (Exception e)
                 {
@@ -291,19 +338,16 @@ namespace file_manager_test_app.Model
             }
         }
 
-        public void MoveBufferedElementsTo(string destination)
+        private void MoveBufferedElementsTo(string destination)
         {
-            if (destination != _currentPath)
+            try
             {
-                try
-                {
-                    this.CopyBufferedElementsTo(destination);
-                    this.DeleteBufferedElements();
-                }
-                catch (Exception e)
-                {
-                    throw e;
-                }
+                this.CopyBufferedElementsTo(destination);
+                this.DeleteBufferedElements(true);
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
@@ -443,6 +487,11 @@ namespace file_manager_test_app.Model
             return myItemsList;
         }
 
+        public List<int> GetSelectedElements()
+        {
+            return _selectedElements;
+        }
+
         public List<MyDriveInfo> GetDrivesList()
         {
             List<MyDriveInfo> myDrivesList = new List<MyDriveInfo>();
@@ -493,13 +542,22 @@ namespace file_manager_test_app.Model
             }
         }
 
-        public void WriteToBuffer()
+        public void WriteToBuffer(int type = 0)
         {
             _buffer.Clear();
 
             foreach (int i in _selectedElements)
             {
                 _buffer.AddElement(_elements[i]);
+            }
+
+            if (type == 1)
+            {
+                _buffer.SetCutPasteType();
+            }
+            else 
+            {
+                _buffer.SetCopyPasteType();
             }
         }
 

@@ -7,13 +7,11 @@ namespace file_manager_test_app.Model
     {
         void SelectElements(List<int> elements);
 
-        void DeleteSelectedElements();
-
-        void CopyBufferedElementsTo(string destination);
+        void DeleteSelectedElements(bool delPermanent);
 
         void CopySelectedElementsTo(string destination);
 
-        void MoveBufferedElementsTo(string destination);
+        void PasteBufferedElementsTo(string destination);
 
         void MoveSelectedElementsTo(string destination);
 
@@ -27,6 +25,6 @@ namespace file_manager_test_app.Model
 
         void NavigationHistoryGoBack();
 
-        void WriteToBuffer();
+        void WriteToBuffer(int type = 0);
     }
 }

@@ -8,6 +8,7 @@ namespace file_manager_test_app.Model
     {                
         private static MyBuffer _singletonInstance = null;
         private List<FileSystemInfo> _elements = new List<FileSystemInfo>();
+        private int _type = 0; //type: 0 - copy/paste, 1 - cut/paste
 
         private MyBuffer() 
         { }
@@ -34,6 +35,21 @@ namespace file_manager_test_app.Model
         public void Clear()
         {
             _elements.Clear();
+        }
+
+        public void SetCopyPasteType()
+        {
+            _type = 0;
+        }
+
+        public void SetCutPasteType()
+        {
+            _type = 1;
+        }
+
+        public bool IsCutPasteType()
+        {
+            return (_type == 1);
         }
     }
 }
