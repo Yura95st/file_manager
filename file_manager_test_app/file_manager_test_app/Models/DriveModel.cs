@@ -55,8 +55,17 @@ namespace file_manager_test_app.Models
 
             foreach (DriveInfo d in _drives)
             {
-                MyDriveInfo myDrive = new MyDriveInfo(d.AvailableFreeSpace, d.DriveFormat, d.DriveType,
-                    d.Name, d.TotalFreeSpace, d.TotalSize, d.VolumeLabel, d.RootDirectory.Name);
+                MyDriveInfo myDrive;
+
+                if (d.IsReady)
+                {
+                    myDrive = new MyDriveInfo(d.AvailableFreeSpace, d.DriveFormat, d.DriveType,
+                        d.Name, d.TotalFreeSpace, d.TotalSize, d.VolumeLabel, d.RootDirectory.Name);
+                }
+                else
+                {
+                    myDrive = new MyDriveInfo(0, "", d.DriveType, d.Name, 0, 0, "", "");
+                }
 
                 list.Add(myDrive);
             }
