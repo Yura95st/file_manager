@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace file_manager_test_app.Model
+namespace file_manager_test_app.Models
 {
     public class MyDriveInfo
     {

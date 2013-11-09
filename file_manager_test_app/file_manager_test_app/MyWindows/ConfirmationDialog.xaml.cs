@@ -12,12 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace file_manager_test_app.Windows
+namespace file_manager_test_app.MyWindows
 {
     /// <summary>
     /// Interaction logic for ConfirmationWindow.xaml
     /// </summary>
-    public partial class CopyMoveConfirmationDialog : Window
+    public partial class ConfirmationDialog : Window
     {
         private string _label = "";
         private string _text = "";
@@ -28,7 +28,7 @@ namespace file_manager_test_app.Windows
         private string _okButtonName = "OKButton";
         private string _cancelButtonName = "CancelButton";
 
-        public CopyMoveConfirmationDialog(string label, string text, Delegate function)
+        public ConfirmationDialog(string label, string text, Delegate function)
         {
             _label = label;
             _text = text;

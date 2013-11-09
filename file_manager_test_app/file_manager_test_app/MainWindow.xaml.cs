@@ -12,20 +12,30 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using file_manager_test_app.Controllers;
 
 namespace file_manager_test_app
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window    
     {
+        MainController mainController;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            Views.MainView mainView = new Views.MainView(this);
-            mainView.Init();
+            mainController = new MainController(this);
+            mainController.Init();
+
+            this.Activated += new EventHandler(Window_Activated);
+        }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            mainController.Refresh();
         }
     }
 }

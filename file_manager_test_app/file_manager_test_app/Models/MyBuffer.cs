@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace file_manager_test_app.Model
+namespace file_manager_test_app.Models
 {
-    class MyBuffer
+    public class MyBuffer
     {                
         private static MyBuffer _singletonInstance = null;
         private List<FileSystemInfo> _elements = new List<FileSystemInfo>();

@@ -61,21 +61,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Windows\CopyMoveConfirmationDialog.xaml.cs">
-      <DependentUpon>CopyMoveConfirmationDialog.xaml</DependentUpon>
+    <Compile Include="Controllers\FileListController.cs" />
+    <Compile Include="Controllers\ColumnController.cs" />
+    <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\MyDriveController.cs" />
+    <Compile Include="Libs\ObserverPattern.cs" />
+    <Compile Include="Models\DriveModel.cs" />
+    <Compile Include="Models\FileListModel.cs" />
+    <Compile Include="Models\MyBuffer.cs" />
+    <Compile Include="Models\NavigationHistoryModel.cs" />
+    <Compile Include="MyWindows\ConfirmationDialog.xaml.cs">
+      <DependentUpon>ConfirmationDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\IColumnInfo.cs" />
-    <Compile Include="Model\IColumnBuild.cs" />
-    <Compile Include="Model\IColumnOperations.cs" />
-    <Compile Include="Model\MyBuffer.cs" />
-    <Compile Include="Model\MyDriveInfo.cs" />
-    <Compile Include="Model\MyFileSystemInfo.cs" />
+    <Compile Include="Models\MyDriveInfo.cs" />
+    <Compile Include="Models\MyFileSystemInfo.cs" />
     <Compile Include="Views\DriveView.cs" />
-    <Compile Include="Views\FileSystemElementView.cs" />
-    <Compile Include="Views\FileSystemView.cs" />
-    <Compile Include="Views\MainView.cs" />
-    <Compile Include="Views\PathView.cs" />
-    <Page Include="Windows\CopyMoveConfirmationDialog.xaml">
+    <Compile Include="Views\FileListView.cs" />
+    <Page Include="MyWindows\ConfirmationDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -87,7 +89,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controllers\ColumnController.cs" />
     <Compile Include="Model\Column.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
