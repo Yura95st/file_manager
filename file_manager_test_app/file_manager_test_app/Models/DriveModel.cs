@@ -1,12 +1,13 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-
-using file_manager_test_app.Libs.ObserverPattern;
-using file_manager_test_app.Models;
-
-namespace file_manager_test_app.Models
+﻿namespace file_manager_test_app.Models
 {
+    using System;
+    using System.IO;
+    using System.Collections.Generic;
+    using System.Linq;
+    //using System.Management;
+
+    using file_manager_test_app.Libs.ObserverPattern;
+
     public class DriveModel : ISubject
     {
         private List<IObserver> _observers = new List<IObserver>();
@@ -30,22 +31,106 @@ namespace file_manager_test_app.Models
             }
         }
 
+        public List<int> GetReadyDrives()
+        {
+            List<int> activeDrives = new List<int>();
+            int i = 0;
+
+            foreach (var d in _drives)
+            {
+                if (d.IsReady)
+                {
+                    activeDrives.Add(i);
+                }
+                i++;
+            }
+
+            return activeDrives;
+        }
+
+        public void SetFirstReadyActiveDrive()
+        {
+            List<int> activeDrives = new List<int>(GetReadyDrives());
+
+            if (activeDrives.Count > 0)
+            {
+                ActiveDrive = activeDrives[0];
+            }
+            else 
+            {
+                throw new Exception("There are no ready drives.");
+            }
+        }
+
         public void BuildDrives()
         {
             _drives.Clear();
+
+            try
+            {
+                BuildDrivesCore(_drives);
+                NotifyObservers(1);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        private void BuildDrivesCore(List<DriveInfo> drives)
+        {
             DriveInfo[] allDrives = DriveInfo.GetDrives();
 
             try
             {
                 foreach (DriveInfo d in allDrives)
                 {
-                    _drives.Add(d);
+                    drives.Add(d);
                 }
-                NotifyObservers(1);
             }
             catch (Exception e)
             {
                 throw e;
+            }
+        }
+
+        public void ReBuildDrives()
+        {
+            List<DriveInfo> reBuildedDrives = new List<DriveInfo>();
+
+            try
+            {
+                BuildDrivesCore(reBuildedDrives);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            try
+            {
+                throw new Exception("Drives list is chaged.");
+
+                if (reBuildedDrives.Count != _drives.Count)
+                {
+                    throw new Exception("Drives list is chaged.");
+                }
+
+                for (int i = 0, count = reBuildedDrives.Count; i < count; i++)
+                {
+                    if (reBuildedDrives[i].Name != _drives[i].Name)
+                    {
+                        throw new Exception("Drives list is chaged.");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                _drives.Clear();
+                _drives = reBuildedDrives;
+                NotifyObservers(1);
+
+                SetFirstReadyActiveDrive();                
             }
         }
 
@@ -90,5 +175,25 @@ namespace file_manager_test_app.Models
                 observer.Update(notificationCode);
             }
         }
+
+        //public void BindDriveMountation()
+        //{
+        //    ManagementEventWatcher watcher = new ManagementEventWatcher();
+        //    WqlEventQuery query = new WqlEventQuery("SELECT * FROM Win32_VolumeChangeEvent WHERE EventType = 2");
+        //    watcher.Query = query;
+        //    watcher.Start();
+        //    watcher.EventArrived += new EventArrivedEventHandler(HandleDriveMountation);
+        //    watcher.WaitForNextEvent();
+        //}
+
+        //private void HandleDriveMountation(object sender, EventArrivedEventArgs e)   
+        //{
+        //    try
+        //    {
+        //        BuildDrives();
+        //    }
+        //    catch (Exception exception)
+        //    { }
+        //}
     }
 }
