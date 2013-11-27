@@ -1,26 +1,30 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using Microsoft.VisualBasic.FileIO;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Text.RegularExpressions;
-using file_manager_test_app.Libs.ObserverPattern;
-
-namespace file_manager_test_app.Models
+﻿namespace file_manager_test_app.Models
 {
+    using System;
+    using System.IO;
+    using System.Collections.Generic;
+    using Microsoft.VisualBasic.FileIO;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Text.RegularExpressions;
+    using file_manager_test_app.Libs.ObserverPattern;
+    using file_manager_test_app.MyWindows;
+
+    public enum OverrideType { Unknown, NotOverride, CreateCopy, Override, OverrideAll };
+
     public class FileListModel : ISubject
     {
         private List<IObserver> _observers = new List<IObserver>();
 
         private List<FileSystemInfo> _elements = new List<FileSystemInfo>();
         private List<int> _selectedElements = new List<int>();
-        private int _activeElement = -1;
+        private int _activeElement = 0;
         private string _currentPath;
         private MyBuffer _buffer = MyBuffer.GetInstance();
         private NavigationHistoryModel navigationHistory = new NavigationHistoryModel();
-        private bool _overrideFile = false;
+        private OverrideType _overrideType = OverrideType.Unknown;
 
         public FileListModel()
         { }
@@ -119,8 +123,10 @@ namespace file_manager_test_app.Models
             }            
         }
 
-        private void CopyElementsTo(List<FileSystemInfo> list, string destination)
+        private void CopyElementsTo(List<FileSystemInfo> list, string destination, OverrideType overrideType = OverrideType.Unknown)
         {
+            _overrideType = overrideType;
+
             foreach (FileSystemInfo element in list)
             {
                 DirectoryInfo d = element as DirectoryInfo;
@@ -141,34 +147,57 @@ namespace file_manager_test_app.Models
 
         private void CopyFileElementTo(FileInfo f, string destination)
         {
-            _overrideFile = false;
-            string path = System.IO.Path.Combine(destination, f.Name);
+            string path = Path.Combine(destination, f.Name);
+            string filePath = f.FullName;
 
-            //int i = 0;
-            //string newName = System.IO.Path.GetFileNameWithoutExtension(f.Name);
+            OverrideType tempOverrideType = _overrideType;
 
-            //while (File.Exists(path))
-            //{
-            //    if (i == 0)
-            //    {
-            //        newName += "-Copy"; 
-            //    }
-
-            //    path = System.IO.Path.Combine(destination, newName + ((i==0) ? "" : i.ToString()) + f.Extension);
-            //    i++;
-            //}
-
-            if (File.Exists(path))
+            if (_overrideType != OverrideType.CreateCopy && filePath == path)
             {
-                Task overrideAsk = new Task(this.ShowOverrideAskDialog);
+                throw new Exception("You can not copy a file to itself");
+            }
 
-                overrideAsk.Start();
-                overrideAsk.Wait();
-                overrideAsk.Dispose();
+            if (_overrideType == OverrideType.NotOverride)
+            {
+                return;
+            }
+            else if (_overrideType == OverrideType.CreateCopy)
+            {
+                int i = 1;
+                string newName = Path.GetFileNameWithoutExtension(f.Name);
 
-                if (!_overrideFile)
+                while (File.Exists(path))
                 {
-                    return;
+                    if (i == 1)
+                    {
+                        newName += " - Copy";
+                    }
+
+                    path = Path.Combine(destination, newName + ((i == 1) ? "" : " (" + i.ToString() + ")") + f.Extension);
+                    i++;
+                }
+            }
+            else if (_overrideType == OverrideType.Unknown)
+            {
+
+                if (File.Exists(path))
+                {
+                    Task overrideAsk = new Task(this.ShowOverrideAskDialog);
+
+                    overrideAsk.Start();
+                    overrideAsk.Wait();
+                    overrideAsk.Dispose();
+
+                    if (_overrideType != OverrideType.OverrideAll)
+                    {                        
+                        if (_overrideType == OverrideType.NotOverride)
+                        {
+                            _overrideType = tempOverrideType;
+                            return;
+                        }
+
+                        _overrideType = tempOverrideType;
+                    }
                 }
             }
 
@@ -178,12 +207,31 @@ namespace file_manager_test_app.Models
         private void CopyDirectoryElementTo(DirectoryInfo d, string destination)
         {
             string tempPath = Path.Combine(destination, d.Name);
+            string dirPath = Path.Combine(_currentPath, d.Name);
 
-            // If the destination directory doesn't exist, create it. 
-            if (!Directory.Exists(tempPath))
+            if (_overrideType != OverrideType.CreateCopy && dirPath == destination || tempPath == dirPath)
             {
-                Directory.CreateDirectory(tempPath);
+                throw new Exception("You can not copy/move a directory to it's own subdirectory");
             }
+
+            if (_overrideType == OverrideType.CreateCopy)
+            {
+                int i = 1;
+                string newName = d.Name;
+
+                while (Directory.Exists(tempPath))
+                {
+                    if (i == 1)
+                    {
+                        newName += " - Copy";
+                    }
+
+                    tempPath = Path.Combine(destination, newName + ((i == 1) ? "" : " (" + i.ToString() + ")"));
+                    i++;
+                }
+            }
+
+            Directory.CreateDirectory(tempPath);
 
             // Get the files in the directory and copy them to the new location.
             FileInfo[] files = d.GetFiles();
@@ -240,7 +288,7 @@ namespace file_manager_test_app.Models
             List<FileSystemInfo> bufferedElements = _buffer.GetElements();
             try
             {
-                CopyElementsTo(bufferedElements, destination);
+                CopyElementsTo(bufferedElements, destination, OverrideType.CreateCopy);
             }
             catch (Exception e)
             {
@@ -301,7 +349,7 @@ namespace file_manager_test_app.Models
         {
             _currentPath = path;
 
-            if (!IsCurrentPathDirectory())
+            if (!IsPathDirectory(_currentPath))
             {                
                 System.Diagnostics.Process.Start(@_currentPath);
                 _currentPath = navigationHistory.GetLastItem();
@@ -333,8 +381,8 @@ namespace file_manager_test_app.Models
             _elements.Clear();
             try
             {
-                this.BuildDirectories();
-                this.BuildFiles();
+                this.BuildDirectories(_elements);
+                this.BuildFiles(_elements);
             }
             catch (Exception e)
             {
@@ -346,14 +394,50 @@ namespace file_manager_test_app.Models
             }
         }
 
-        private void BuildFiles()
+        public void ReBuildElements()
+        {
+            List<FileSystemInfo> rebuildedElements = new List<FileSystemInfo>();
+            try
+            {
+                this.BuildDirectories(rebuildedElements);
+                this.BuildFiles(rebuildedElements);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            try
+            {
+                if (rebuildedElements.Count != _elements.Count)
+                {
+                    throw new Exception("Elements list is chaged.");
+                }
+
+                for (int i = 0, count = rebuildedElements.Count; i < count; i++)
+                {
+                    if (rebuildedElements[i].FullName != _elements[i].FullName)
+                    {
+                        throw new Exception("Elements list is chaged.");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                _elements.Clear();
+                _elements = rebuildedElements;
+                NotifyObservers(0);
+            }
+        }
+
+        private void BuildFiles(List<FileSystemInfo> elements)
         {
             DirectoryInfo di = new DirectoryInfo(@_currentPath);
             try
             {
                 foreach (FileInfo f in di.GetFiles())
                 {
-                    _elements.Add(f);
+                    elements.Add(f);
                 }
             }
             catch (Exception e)
@@ -362,14 +446,16 @@ namespace file_manager_test_app.Models
             }
         }
 
-        private void BuildDirectories()
+        private void BuildDirectories(List<FileSystemInfo> elements)
         {
             DirectoryInfo di = new DirectoryInfo(@_currentPath);
             try
             {
+                elements.Add(di);
+
                 foreach (DirectoryInfo d in di.GetDirectories())
                 {
-                    _elements.Add(d);
+                    elements.Add(d);
                 }
             }
             catch (Exception e)
@@ -406,6 +492,29 @@ namespace file_manager_test_app.Models
             return _selectedElements;
         }
 
+        public MyFileSystemInfo GetElementById(int id)
+        {
+            if (id > _elements.Count)
+            {
+                throw new Exception("Invalid id");
+            }
+
+            var item = _elements[id];
+
+            MyFileSystemInfo myItem = new MyFileSystemInfo(item.Name, item.Extension, item.FullName,
+               item.Attributes, item.CreationTime, item.CreationTimeUtc, item.LastAccessTime,
+               item.LastAccessTimeUtc, item.LastWriteTime, item.LastWriteTimeUtc);
+
+            //File has its size, directory doesn't
+            FileInfo f = item as FileInfo;
+            if (f != null)
+            {
+                myItem.Size = f.Length;
+            }
+
+            return myItem;
+        }
+
         public void Read()
         {
             var item = _elements[_activeElement];
@@ -420,12 +529,19 @@ namespace file_manager_test_app.Models
             }
         }
 
-        private bool IsCurrentPathDirectory()
+        public bool IsPathDirectory(string path)
         {
-            FileAttributes attr = File.GetAttributes(@_currentPath);
+            try
+            {
+                FileAttributes attr = File.GetAttributes(@path);
 
-            //detect whether its a directory - (true) or file - (false)
-            return (attr & FileAttributes.Directory) == FileAttributes.Directory;
+                //detect whether its a directory - (true) or file - (false)
+                return (attr & FileAttributes.Directory) == FileAttributes.Directory;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }            
         }
 
         public void NavigationHistoryGoBack()
@@ -442,12 +558,23 @@ namespace file_manager_test_app.Models
         private void ShowOverrideAskDialog()
         {
             string caption = "File Commander";
-            string message = "Do you want to override this file \n\n";
+            string message = "Do you want to override selected files (Cancel == OverrideAll) \n\n";
+            //string message = "Override:\n\n\t" + firstPath + "\n\n With:\n\n\t" + secondPath + "\n\n(Cancel == OverrideAll)\n\n";
             MessageBoxButton buttons = MessageBoxButton.YesNoCancel;
             MessageBoxImage icon = MessageBoxImage.Question;
-            if (MessageBox.Show(message, caption, buttons, icon) == MessageBoxResult.Yes)
+            MessageBoxResult result = MessageBox.Show(message, caption, buttons, icon);
+
+            if (result == MessageBoxResult.Yes)
             {
-                _overrideFile = true;
+                _overrideType = OverrideType.Override;
+            }
+            else if (result == MessageBoxResult.No)
+            {
+                _overrideType = OverrideType.NotOverride;
+            }
+            else if (result == MessageBoxResult.Cancel)
+            {
+                _overrideType = OverrideType.OverrideAll;
             }
             else
             {
@@ -545,6 +672,12 @@ namespace file_manager_test_app.Models
 
             FileSystemInfo item = _elements[_activeElement];
 
+            //New name is the same as old
+            if (newPath == item.FullName)
+            {
+                return;
+            }
+
             FileInfo fileInfo = item as FileInfo;
             if (fileInfo != null)
             {
@@ -572,6 +705,77 @@ namespace file_manager_test_app.Models
                     throw e;
                 }
             }
+        }
+
+        public void Merge(bool isSpecial)
+        {
+            List<FileSystemInfo> list = new List<FileSystemInfo>();
+            foreach (int i in _selectedElements)
+            {
+                list.Add(_elements[i]);
+            }
+
+            if (list.Count != 2)
+            {
+                throw new Exception("Too many/few elements selected. It is allowed to select only 2 elements.");
+            }
+
+            foreach (FileSystemInfo element in list)
+            {
+                DirectoryInfo d = element as DirectoryInfo;
+                if (d != null)
+                {
+                    throw new Exception("Selected elements contain directory");
+                }
+
+                FileInfo f = element as FileInfo;
+                if (f != null)
+                {
+                    continue;
+                }
+            }
+
+            string dividingLine = "\n\n----------MERGED_TEXT----------\n\n";
+
+            if (!isSpecial)
+            {
+                try
+                {
+                    var text = dividingLine + File.ReadAllText(@list[1].FullName);
+                    File.AppendAllText(@list[0].FullName, text);
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+            }
+            else
+            {                
+                try
+                {
+                    List<string> firstLinesList = new List<string>(File.ReadAllLines(@list[0].FullName));
+                    List<string> secondLinesList = new List<string>(File.ReadAllLines(@list[1].FullName));
+
+                    List<string> finalLinesList = new List<string>(firstLinesList);
+                    finalLinesList.Add(dividingLine);
+
+                    foreach (var line in secondLinesList) 
+                    {
+                        if (!firstLinesList.Contains(line))
+                        {
+                            finalLinesList.Add(line);
+                        }
+                    }
+
+                    File.WriteAllLines(@list[0].FullName, finalLinesList);
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+ 
+            }
+
         }
     }
 }
