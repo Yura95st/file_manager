@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -67,11 +68,11 @@ namespace file_manager_test_app.Views
            
             ListViewItem item = new ListViewItem();
 
-            for (int i = -1, count = list.Count; i < count; i++)
+            for (int i = 0, count = list.Count; i < count; i++)
             {
                 item = new ListViewItem();
 
-                if (i == -1)
+                if (i == 0)
                 {
                     if (_controller.isCurrentPathRoot())
                     {
@@ -90,6 +91,85 @@ namespace file_manager_test_app.Views
                 item.KeyDown += FileSystemElement_OnKeyDown;
 
                 listView.Items.Add(item);
+            }
+
+            SetListViewContextMenu();
+        }
+
+        private void SetListViewContextMenu()
+        {
+            ListView listView = (ListView)_mainWindow.FindName(_elementListViewsNames[_type]);
+            ContextMenu contextMenu = new ContextMenu();
+            MenuItem item;
+
+            item = new MenuItem();
+            item.Header = "View";
+            item.Click += (sender, args) =>
+            {
+                MyRead();
+            };
+            contextMenu.Items.Add(item);
+
+            contextMenu.Items.Add(new Separator());
+
+            item = new MenuItem();
+            item.Header = "Cut";
+            item.Click += (sender, args) =>
+            {
+                Cut();
+            };
+            contextMenu.Items.Add(item);
+
+            item = new MenuItem();
+            item.Header = "Copy";
+            item.Click += (sender, args) =>
+            {
+                Copy();
+            };
+            contextMenu.Items.Add(item);
+
+            item = new MenuItem();
+            item.Header = "Paste";
+            item.Click += (sender, args) =>
+            {
+                Paste();
+            };
+            contextMenu.Items.Add(item);
+
+            contextMenu.Items.Add(new Separator());
+
+            item = new MenuItem();
+            item.Header = "Delete";
+            item.Click += (sender, args) =>
+            {
+                Delete(false);
+            };
+            contextMenu.Items.Add(item);
+
+            item = new MenuItem();
+            item.Header = "Rename";
+            item.Click += (sender, args) =>
+            {
+                Rename();
+            };
+            contextMenu.Items.Add(item);
+
+            contextMenu.Items.Add(new Separator());
+
+            item = new MenuItem();
+            item.Header = "Properties";
+            item.Click += (sender, args) =>
+            {
+            };
+            contextMenu.Items.Add(item);
+
+            foreach (ListViewItem listViewItem in listView.Items)
+            {
+                if (listViewItem.Uid == "0" && !_controller.isCurrentPathRoot())
+                {
+                    continue;
+                }
+                listViewItem.ContextMenu = contextMenu;
             }
         }
 
@@ -129,12 +209,18 @@ namespace file_manager_test_app.Views
             _controller.SetActiveElement(lastSelectedElementId);
         }
 
-        private void FileSystemElementRead(object sender)
+        private void MyRead()
+        {
+            _controller.MyRead();
+        }
+
+
+        private void Read(object sender)
         {
             ListBoxItem item = sender as ListBoxItem;
             int elementId = Convert.ToInt32(item.Uid);
 
-            if (elementId == -1)
+            if (elementId == 0 && !_controller.isCurrentPathRoot())
             {
                 _controller.NavigationHistoryGoBack();
             }
@@ -159,28 +245,49 @@ namespace file_manager_test_app.Views
             _controller.PasteFromBuffer();
         }
 
-        private void FileSystemElement_OnDoubleClick(object sender, RoutedEventArgs e)
+        private void Merge()
         {
-            FileSystemElementRead(sender);
+            _controller.Merge();
+        }
+
+        private void SpecialMerge()
+        {
+            _controller.SpecialMerge();
+        }
+
+        private void FileSystemElement_OnDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                Read(sender);
+            }
         }
 
         private void FileSystemElement_OnKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                FileSystemElementRead(sender);
+                Read(sender);
             }
-            else if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.C)
+            else if (Keyboard.Modifiers.HasFlag(ModifierKeys.Control) && e.Key == Key.C)
             {
                 Copy();
             }
-            else if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.X)
+            else if (Keyboard.Modifiers.HasFlag(ModifierKeys.Control) && e.Key == Key.X)
             {
                 Cut();
             }
-            else if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.V)
+            else if (Keyboard.Modifiers.HasFlag(ModifierKeys.Control) && e.Key == Key.V)
             {
                 Paste();
+            }
+            else if (Keyboard.Modifiers.HasFlag(ModifierKeys.Control) && Keyboard.Modifiers.HasFlag(ModifierKeys.Shift)&& e.Key == Key.M)
+            {
+                SpecialMerge();
+            }
+            else if (Keyboard.Modifiers.HasFlag(ModifierKeys.Control) && e.Key == Key.M)
+            {
+                Merge();
             }
             else if (e.Key == Key.F2)
             {
@@ -198,7 +305,7 @@ namespace file_manager_test_app.Views
             {
                 CreateNewFolder();
             }
-            else if (Keyboard.Modifiers == ModifierKeys.Shift && (e.Key == Key.F8 || e.Key == Key.Delete))
+            else if (Keyboard.Modifiers.HasFlag(ModifierKeys.Shift) && (e.Key == Key.F8 || e.Key == Key.Delete))
             {
                 Delete(true);
             }
@@ -264,6 +371,19 @@ namespace file_manager_test_app.Views
         public void SetAlertMessage(string msg)
         {
             MessageBoxResult result = MessageBox.Show(_mainWindow, msg, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.OK)
+            {
+                // Yes code here
+            }
+            else
+            {
+                // No code here
+            }
+        }
+
+        public void SetInfoMessage(string msg)
+        {
+            MessageBoxResult result = MessageBox.Show(_mainWindow, msg, "Info", MessageBoxButton.OK, MessageBoxImage.Information);
             if (result == MessageBoxResult.OK)
             {
                 // Yes code here
