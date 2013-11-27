@@ -1,0 +1,27 @@
+﻿<Window x:Class="file_manager_test_app.MyWindows.TextEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TextEditor" Height="400" Width="600" WindowStartupLocation="CenterScreen">
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Margin="0,5" Content="Word counter:"/>
+            
+            <StackPanel Grid.Column="1" VerticalAlignment="Top">
+                <TextBox  Margin="5,5,5,0" x:Name="SearchTextBox"/>
+                <Label Margin="0" Content="" x:Name="SearchResultsLabel"/>
+            </StackPanel>
+        </Grid>
+
+        <TextBox Grid.Row="2" TextWrapping="Wrap" Text="TextBox" x:Name="FileContentTextBox" VerticalScrollBarVisibility="Auto" />
+    </Grid>
+</Window>

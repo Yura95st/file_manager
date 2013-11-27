@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Printing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,11 +62,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\TextEditorController.cs" />
     <Compile Include="Controllers\FileListController.cs" />
     <Compile Include="Controllers\ColumnController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\MyDriveController.cs" />
     <Compile Include="Libs\ObserverPattern.cs" />
+    <Compile Include="Models\TextEditorModel.cs" />
     <Compile Include="Models\DriveModel.cs" />
     <Compile Include="Models\FileListModel.cs" />
     <Compile Include="Models\MyBuffer.cs" />
@@ -75,6 +78,10 @@
     </Compile>
     <Compile Include="Models\MyDriveInfo.cs" />
     <Compile Include="Models\MyFileSystemInfo.cs" />
+    <Compile Include="MyWindows\TextEditorWindow.xaml.cs">
+      <DependentUpon>TextEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TextEditorView.cs" />
     <Compile Include="Views\DriveView.cs" />
     <Compile Include="Views\FileListView.cs" />
     <Page Include="MyWindows\ConfirmationDialog.xaml">
@@ -94,6 +101,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MyWindows\TextEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
