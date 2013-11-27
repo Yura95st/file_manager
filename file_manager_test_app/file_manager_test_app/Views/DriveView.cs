@@ -89,7 +89,7 @@ namespace file_manager_test_app.Views
         private void BuildDriveComboBoxPanel(List<MyDriveInfo> drivesList)
         {
             ComboBox driveComboBox = (ComboBox)_mainWindow.FindName(_driveComboBoxPanelNames[_type]);
-            driveComboBox.Items.Clear();
+            //driveComboBox.Items.Clear();
 
             foreach (MyDriveInfo d in drivesList)
             {

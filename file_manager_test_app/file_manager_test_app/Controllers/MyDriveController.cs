@@ -23,7 +23,7 @@ namespace file_manager_test_app.Controllers
             try
             {
                 _model.BuildDrives();
-                _model.ActiveDrive = 0;
+                _model.SetFirstReadyActiveDrive();
             }
             catch (Exception e)
             { }
@@ -31,7 +31,7 @@ namespace file_manager_test_app.Controllers
 
         public void Refresh()
         {
-            _model.BuildDrives();
+            _model.ReBuildDrives();
         }
 
         public void SetActiveDrive(int id)
@@ -47,6 +47,16 @@ namespace file_manager_test_app.Controllers
         public List<MyDriveInfo> GetDrivesList()
         {
             return _model.GetDrivesList();
+        }
+
+        public void SetFirstReadyActiveDrive()
+        {
+            try
+            {
+                _model.SetFirstReadyActiveDrive();
+            }
+            catch (Exception e)
+            { }
         }
     }
 }

@@ -30,7 +30,7 @@ namespace file_manager_test_app
             mainController = new MainController(this);
             mainController.Init();
 
-            this.Activated += new EventHandler(Window_Activated);
+            //this.Activated += new EventHandler(Window_Activated);
         }
 
         private void Window_Activated(object sender, EventArgs e)

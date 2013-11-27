@@ -20,8 +20,8 @@ namespace file_manager_test_app.Controllers
 
         public void Refresh()
         {
-            //_driveController.Refresh();
-            //_fileListController.Refresh();
+            _driveController.Refresh();
+            _fileListController.Refresh();
         }
 
         public void SetColumnController(ColumnController columnController)
@@ -98,7 +98,7 @@ namespace file_manager_test_app.Controllers
             string destination = this.GetCurrentPath();
 
             _fileListController.PasteBufferedElementsTo(destination);
-            _columnController.RefreshFileListElements();
+            RefreshSecondColumnController();
         }
 
         public string GetCurrentPath()
@@ -125,6 +125,7 @@ namespace file_manager_test_app.Controllers
                 destination = _columnController.GetCurrentPath();
             }
             _fileListController.CopySelectedElementsTo(destination);
+            RefreshSecondColumnController();
         }
 
         public void MoveTo(string destination = "")
@@ -134,17 +135,13 @@ namespace file_manager_test_app.Controllers
                 destination = _columnController.GetCurrentPath();
             }
             _fileListController.MoveSelectedElementsTo(destination);
-            _columnController.RefreshFileListElements();
+            RefreshSecondColumnController();
         }
 
         public void Delete(bool delPermanent = false)
         {
             _fileListController.DeleteSelectedElements(delPermanent);
-
-            if (this.GetCurrentPath() == _columnController.GetCurrentPath())
-            {
-                _columnController.RefreshFileListElements();
-            }
+            RefreshSecondColumnController(true);
         }
 
         public void NavigationHistoryGoBack()
@@ -155,27 +152,50 @@ namespace file_manager_test_app.Controllers
         public void CreateNewTxtFile(string name)
         {
             _fileListController.CreateNewTxtFile(name);
-
-            if (this.GetCurrentPath() == _columnController.GetCurrentPath())
-            {
-                _columnController.RefreshFileListElements();
-            }
+            RefreshSecondColumnController(true);
         }
 
         public void CreateNewDirectory(string name)
         {
             _fileListController.CreateNewDirectory(name);
-
-            if (this.GetCurrentPath() == _columnController.GetCurrentPath())
-            {
-                _columnController.RefreshFileListElements();
-            }
+            RefreshSecondColumnController(true);
         }
 
         public void Rename(string newName)
         {
             _fileListController.Rename(newName);
-        } 
+            RefreshSecondColumnController(true);
+        }
+
+        public void Merge()
+        {
+            _fileListController.Merge();
+        }
+
+        public void SpecialMerge()
+        {
+            _fileListController.SpecialMerge();
+        }
+
+        public void MyRead()
+        {
+            _fileListController.MyRead();
+        }
+
+        private void RefreshSecondColumnController(bool withPathCheck = false)
+        {
+            if (!withPathCheck)
+            {
+                _columnController.RefreshFileListElements();
+            }
+            else
+            {
+                if (this.GetCurrentPath() == _columnController.GetCurrentPath())
+                {
+                    _columnController.RefreshFileListElements();
+                }
+            }
+        }
         
         //public void Merge()
         //{

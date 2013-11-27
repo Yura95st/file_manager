@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using file_manager_test_app.Models;
 using file_manager_test_app.Views;
+using file_manager_test_app.MyWindows;
 
 namespace file_manager_test_app.Controllers
 {
@@ -84,7 +85,7 @@ namespace file_manager_test_app.Controllers
         {            
             try
             {
-                _model.BuildElements();
+                _model.ReBuildElements();
             }
             catch (Exception e)
             {
@@ -228,6 +229,58 @@ namespace file_manager_test_app.Controllers
                 //notify view about error
                 _view.SetAlertMessage(e.Message);
             }
-        } 
+        }
+
+        public void Merge()
+        {
+            try
+            {
+                _model.Merge(false);
+                _view.SetInfoMessage("Files are merged");
+            }
+            catch (Exception e)
+            {
+                //notify view about error
+                _view.SetAlertMessage(e.Message);
+            }
+        }
+
+        public void SpecialMerge()
+        {
+            try
+            {
+                _model.Merge(true);
+                _view.SetInfoMessage("Files are merged with special algorithm");
+            }
+            catch (Exception e)
+            {
+                //notify view about error
+                _view.SetAlertMessage(e.Message);
+            }
+        }
+
+        public void MyRead()
+        {            
+            try
+            {
+                var element = _model.GetElementById(_model.ActiveElement);
+                string path = element.FullName;
+
+                if (_model.IsPathDirectory(path))
+                {
+                    _model.Read();
+                }
+                else 
+                {
+                    TextEditorWindow textEditor = new TextEditorWindow(path);
+                    textEditor.Show();
+                }
+            }
+            catch (Exception e)
+            {
+                //notify view about error
+                _view.SetAlertMessage(e.Message);
+            }
+        }
     }
 }
