@@ -584,7 +584,7 @@
 
         public void CreateNewDirectory(string name)
         {
-            string newDirFullName = _currentPath + name;
+            string newDirFullName = Path.Combine(_currentPath, name);
 
             if (!IsValidFilename(newDirFullName))
             {
