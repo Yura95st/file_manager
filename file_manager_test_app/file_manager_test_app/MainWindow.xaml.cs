@@ -33,9 +33,9 @@ namespace file_manager_test_app
             //this.Activated += new EventHandler(Window_Activated);
         }
 
-        private void Window_Activated(object sender, EventArgs e)
-        {
-            mainController.Refresh();
-        }
+        //private void Window_Activated(object sender, EventArgs e)
+        //{
+        //    mainController.Refresh();
+        //}
     }
 }
